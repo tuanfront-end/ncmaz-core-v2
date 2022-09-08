@@ -5,10 +5,6 @@ import { SelectControl } from "@wordpress/components";
 const SelectPostFormat = ({ onChange, defaultValue }) => {
 	const [format, setFormat] = useState(defaultValue);
 
-	useEffect(() => {
-		onChange && onChange(format);
-	}, [format]);
-
 	return (
 		<div>
 			<SelectControl
@@ -20,7 +16,10 @@ const SelectPostFormat = ({ onChange, defaultValue }) => {
 					{ label: "video", value: "video" },
 					{ label: "audio", value: "audio" },
 				]}
-				onChange={setFormat}
+				onChange={(e) => {
+					setFormat(e);
+					onChange && onChange(e);
+				}}
 			/>
 		</div>
 	);

@@ -1,5 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
+import React from "react";
 import _ from "lodash";
 
 export default function BlockPostsSliderSave(props) {

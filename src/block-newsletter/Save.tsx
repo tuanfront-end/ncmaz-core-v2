@@ -2,6 +2,7 @@ import { __ } from "@wordpress/i18n";
 import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 import BackgroundSection from "../frontend-components/BackgroundSection/BackgroundSection";
 import Badge from "../frontend-components/Badge/Badge";
+import React from "react";
 
 export default function Save(props) {
 	const { attributes } = props;

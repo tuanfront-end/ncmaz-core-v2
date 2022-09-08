@@ -15,7 +15,7 @@ export interface ListPosts {
 	edges: Post[];
 }
 
-interface Post {
+export interface Post {
 	node: PostNode;
 }
 

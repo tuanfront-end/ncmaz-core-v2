@@ -5,10 +5,6 @@ import { SelectControl } from "@wordpress/components";
 const SelectOrderBy = ({ onChange, defaultValue = "date" }) => {
 	const [orderBy, setOrderBy] = useState(defaultValue);
 
-	useEffect(() => {
-		onChange && onChange(orderBy);
-	}, [orderBy]);
-
 	return (
 		<div>
 			<SelectControl
@@ -28,7 +24,10 @@ const SelectOrderBy = ({ onChange, defaultValue = "date" }) => {
 					{ label: "SLUG", value: "SLUG" },
 					{ label: "TITLE", value: "TITLE" },
 				]}
-				onChange={(value) => setOrderBy(value)}
+				onChange={(value) => {
+					setOrderBy(value);
+					onChange && onChange(value);
+				}}
 			/>
 		</div>
 	);

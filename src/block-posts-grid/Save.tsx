@@ -1,4 +1,5 @@
 import { __ } from "@wordpress/i18n";
+import React from "react";
 import { useBlockProps } from "@wordpress/block-editor";
 import _ from "lodash";
 

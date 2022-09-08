@@ -2799,20 +2799,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__);
 
 
-/**
- * Registers a new block provided a unique name and an object defining its behavior.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
- */
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * All files containing `style` keyword are bundled together. The code used
- * gets applied both to the front of your site and to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-
 
 /**
  * Internal dependencies
@@ -2824,12 +2810,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-/**
- * Every block starts by registering a new block type definition.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
- */
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_5__.name, {
   edit: props => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_apollo_client__WEBPACK_IMPORTED_MODULE_9__.ApolloProvider, {
@@ -2942,14 +2922,12 @@ const InputNumberPerPage = _ref => {
     defaultValue = 6
   } = _ref;
   const [perPage, setPerPage] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultValue);
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    onChange && onChange(perPage);
-  }, [perPage]);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "w-full space-y-1"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Number per page", "ncmaz-core")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
     onChange: e => {
       setPerPage(e || 6);
+      onChange && onChange(e);
     },
     value: perPage
   }));
@@ -3354,9 +3332,6 @@ const SelectOrder = _ref => {
     defaultValue = "DESC"
   } = _ref;
   const [order, setOrder] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultValue);
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    onChange && onChange(order);
-  }, [order]);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
     label: "Order",
     value: order,
@@ -3367,7 +3342,10 @@ const SelectOrder = _ref => {
       label: "ASC",
       value: "ASC"
     }],
-    onChange: setOrder
+    onChange: e => {
+      setOrder(e);
+      onChange && onChange(e);
+    }
   }));
 };
 
@@ -3399,9 +3377,6 @@ const SelectOrderBy = _ref => {
     defaultValue = "date"
   } = _ref;
   const [orderBy, setOrderBy] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultValue);
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    onChange && onChange(orderBy);
-  }, [orderBy]);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
     label: "Order By",
     value: orderBy,
@@ -3442,7 +3417,10 @@ const SelectOrderBy = _ref => {
       label: "TITLE",
       value: "TITLE"
     }],
-    onChange: value => setOrderBy(value)
+    onChange: value => {
+      setOrderBy(value);
+      onChange && onChange(value);
+    }
   }));
 };
 
@@ -4501,7 +4479,10 @@ function usePostGqlQuery(attributes) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ATTR_SETTINGS_SLIDER": function() { return /* binding */ ATTR_SETTINGS_SLIDER; },
 /* harmony export */   "BLOCK_POST_ATTRIBUTES_COMMON": function() { return /* binding */ BLOCK_POST_ATTRIBUTES_COMMON; },
+/* harmony export */   "BLOCK_TERM_ATTRIBUTES_COMMON": function() { return /* binding */ BLOCK_TERM_ATTRIBUTES_COMMON; },
+/* harmony export */   "BLOCK_USER_ATTRIBUTES_COMMON": function() { return /* binding */ BLOCK_USER_ATTRIBUTES_COMMON; },
 /* harmony export */   "client": function() { return /* binding */ client; }
 /* harmony export */ });
 /* harmony import */ var _apollo_client__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @apollo/client */ "./node_modules/@apollo/client/cache/inmemory/inMemoryCache.js");
@@ -4564,7 +4545,9 @@ const client = new _apollo_client__WEBPACK_IMPORTED_MODULE_8__.ApolloClient({
   uri: ncmazcoreJsData.graphQLBasePath,
   cache,
   link: (0,_apollo_client__WEBPACK_IMPORTED_MODULE_9__.from)([link, httpLink])
-});
+}); //
+//
+
 const BLOCK_POST_ATTRIBUTES_COMMON = {
   filterDataBy: {
     type: "string",
@@ -4631,7 +4614,152 @@ const BLOCK_POST_ATTRIBUTES_COMMON = {
     default: 8
   }
 };
-console.log(2323232);
+const ATTR_SETTINGS_SLIDER = {
+  itemPerView: {
+    type: "number",
+    default: 4
+  },
+  sliderStartAt: {
+    type: "number",
+    default: 0
+  },
+  sliderAutoplayTime: {
+    type: "number",
+    default: 0
+  },
+  sliderHoverpause: {
+    type: "boolean",
+    default: false
+  },
+  sliderAnimationDuration: {
+    type: "number",
+    default: 400
+  },
+  sliderRewind: {
+    type: "boolean",
+    default: true
+  }
+};
+const BLOCK_TERM_ATTRIBUTES_COMMON = {
+  blockLayoutStyle: {
+    type: "string",
+    default: "layout-1"
+  },
+  termCardName: {
+    type: "string",
+    default: "card2"
+  },
+  typeOfTerm: {
+    type: "string",
+    default: "category"
+  },
+  filterDataBy: {
+    type: "string",
+    default: "by_filter"
+  },
+  categories: {
+    type: "array",
+    default: []
+  },
+  tags: {
+    type: "array",
+    default: []
+  },
+  orderBy: {
+    type: "string",
+    default: "NAME"
+  },
+  order: {
+    type: "string",
+    default: "DESC"
+  },
+  heading: {
+    type: "string",
+    default: "Heading of section"
+  },
+  subHeading: {
+    type: "string",
+    default: "This is sub-heading of section"
+  },
+  numberPerPage: {
+    type: "number",
+    default: 10
+  },
+  hasBackground: {
+    type: "boolean",
+    default: false
+  },
+  graphQLvariables: {
+    type: "object",
+    default: {}
+  },
+  graphQLData: {
+    type: "object",
+    default: {}
+  },
+  expectedNumberResults: {
+    type: "number",
+    default: 8
+  }
+};
+const BLOCK_USER_ATTRIBUTES_COMMON = {
+  filterDataBy: {
+    type: "string",
+    default: "by_filter"
+  },
+  numberPerPage: {
+    type: "number",
+    default: 8
+  },
+  orderBy: {
+    type: "string",
+    default: "REGISTERED"
+  },
+  order: {
+    type: "string",
+    default: "DESC"
+  },
+  userIds: {
+    type: "array",
+    default: []
+  },
+  roleIn: {
+    type: "array",
+    default: []
+  },
+  blockLayoutStyle: {
+    type: "string",
+    default: "layout-1"
+  },
+  userCardName: {
+    type: "string",
+    default: "card2"
+  },
+  heading: {
+    type: "string",
+    default: "Heading of section"
+  },
+  subHeading: {
+    type: "string",
+    default: "This is sub-heading of section"
+  },
+  hasBackground: {
+    type: "boolean",
+    default: false
+  },
+  graphQLvariables: {
+    type: "object",
+    default: {}
+  },
+  graphQLData: {
+    type: "object",
+    default: {}
+  },
+  expectedNumberResults: {
+    type: "number",
+    default: 8
+  }
+};
 
 /***/ }),
 

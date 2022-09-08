@@ -1,6 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
 import _ from "lodash";
+import React from "react";
 
 export default function Save(props) {
 	const { attributes } = props;

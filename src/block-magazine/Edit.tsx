@@ -1,9 +1,8 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { __ } from "@wordpress/i18n";
 import InputSearchPosts from "../components/InputSearchPosts";
 import InputSearchCategories from "../components/InputSearchCategories";
 import InputSearchTags from "../components/InputSearchTags";
-import { useEffect, useState } from "@wordpress/element";
 import {
 	TextControl,
 	Panel,

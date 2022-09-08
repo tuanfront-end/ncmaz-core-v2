@@ -506,7 +506,10 @@ function isObjRef(value) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ATTR_SETTINGS_SLIDER": function() { return /* binding */ ATTR_SETTINGS_SLIDER; },
 /* harmony export */   "BLOCK_POST_ATTRIBUTES_COMMON": function() { return /* binding */ BLOCK_POST_ATTRIBUTES_COMMON; },
+/* harmony export */   "BLOCK_TERM_ATTRIBUTES_COMMON": function() { return /* binding */ BLOCK_TERM_ATTRIBUTES_COMMON; },
+/* harmony export */   "BLOCK_USER_ATTRIBUTES_COMMON": function() { return /* binding */ BLOCK_USER_ATTRIBUTES_COMMON; },
 /* harmony export */   "client": function() { return /* binding */ client; }
 /* harmony export */ });
 /* harmony import */ var _apollo_client__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @apollo/client */ "./node_modules/@apollo/client/cache/inmemory/inMemoryCache.js");
@@ -569,7 +572,9 @@ const client = new _apollo_client__WEBPACK_IMPORTED_MODULE_8__.ApolloClient({
   uri: ncmazcoreJsData.graphQLBasePath,
   cache,
   link: (0,_apollo_client__WEBPACK_IMPORTED_MODULE_9__.from)([link, httpLink])
-});
+}); //
+//
+
 const BLOCK_POST_ATTRIBUTES_COMMON = {
   filterDataBy: {
     type: "string",
@@ -636,7 +641,152 @@ const BLOCK_POST_ATTRIBUTES_COMMON = {
     default: 8
   }
 };
-console.log(2323232);
+const ATTR_SETTINGS_SLIDER = {
+  itemPerView: {
+    type: "number",
+    default: 4
+  },
+  sliderStartAt: {
+    type: "number",
+    default: 0
+  },
+  sliderAutoplayTime: {
+    type: "number",
+    default: 0
+  },
+  sliderHoverpause: {
+    type: "boolean",
+    default: false
+  },
+  sliderAnimationDuration: {
+    type: "number",
+    default: 400
+  },
+  sliderRewind: {
+    type: "boolean",
+    default: true
+  }
+};
+const BLOCK_TERM_ATTRIBUTES_COMMON = {
+  blockLayoutStyle: {
+    type: "string",
+    default: "layout-1"
+  },
+  termCardName: {
+    type: "string",
+    default: "card2"
+  },
+  typeOfTerm: {
+    type: "string",
+    default: "category"
+  },
+  filterDataBy: {
+    type: "string",
+    default: "by_filter"
+  },
+  categories: {
+    type: "array",
+    default: []
+  },
+  tags: {
+    type: "array",
+    default: []
+  },
+  orderBy: {
+    type: "string",
+    default: "NAME"
+  },
+  order: {
+    type: "string",
+    default: "DESC"
+  },
+  heading: {
+    type: "string",
+    default: "Heading of section"
+  },
+  subHeading: {
+    type: "string",
+    default: "This is sub-heading of section"
+  },
+  numberPerPage: {
+    type: "number",
+    default: 10
+  },
+  hasBackground: {
+    type: "boolean",
+    default: false
+  },
+  graphQLvariables: {
+    type: "object",
+    default: {}
+  },
+  graphQLData: {
+    type: "object",
+    default: {}
+  },
+  expectedNumberResults: {
+    type: "number",
+    default: 8
+  }
+};
+const BLOCK_USER_ATTRIBUTES_COMMON = {
+  filterDataBy: {
+    type: "string",
+    default: "by_filter"
+  },
+  numberPerPage: {
+    type: "number",
+    default: 8
+  },
+  orderBy: {
+    type: "string",
+    default: "REGISTERED"
+  },
+  order: {
+    type: "string",
+    default: "DESC"
+  },
+  userIds: {
+    type: "array",
+    default: []
+  },
+  roleIn: {
+    type: "array",
+    default: []
+  },
+  blockLayoutStyle: {
+    type: "string",
+    default: "layout-1"
+  },
+  userCardName: {
+    type: "string",
+    default: "card2"
+  },
+  heading: {
+    type: "string",
+    default: "Heading of section"
+  },
+  subHeading: {
+    type: "string",
+    default: "This is sub-heading of section"
+  },
+  hasBackground: {
+    type: "boolean",
+    default: false
+  },
+  graphQLvariables: {
+    type: "object",
+    default: {}
+  },
+  graphQLData: {
+    type: "object",
+    default: {}
+  },
+  expectedNumberResults: {
+    type: "number",
+    default: 8
+  }
+};
 
 /***/ }),
 

@@ -1,8 +1,15 @@
 import React, { FC } from "react";
+import { Post } from "../../hooks/usePostGqlQuery";
 import Card3Small from "../Card3Small/Card3Small";
 import WidgetHeading1 from "../WidgetHeading1/WidgetHeading1";
 
-const WidgetPosts = ({
+interface Props {
+	className?: string;
+	heading?: string;
+	postEdges?: Post[];
+}
+
+const WidgetPosts: FC<Props> = ({
 	className = "bg-neutral-100 dark:bg-neutral-800",
 	postEdges = [],
 	heading = "",

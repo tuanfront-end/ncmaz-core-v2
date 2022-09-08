@@ -1,10 +1,15 @@
 import React, { FC } from "react";
 
-const WidgetHeading1 = ({
+interface Props {
+	className?: string;
+	title: string;
+}
+
+const WidgetHeading1: FC<Props> = ({
 	className = "",
 	title,
-	viewAllLabel,
-	viewAllHref,
+	// viewAllLabel,
+	// viewAllHref,
 }) => {
 	return (
 		<div

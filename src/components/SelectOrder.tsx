@@ -5,10 +5,6 @@ import { SelectControl } from "@wordpress/components";
 const SelectOrder = ({ onChange, defaultValue = "DESC" }) => {
 	const [order, setOrder] = useState(defaultValue);
 
-	useEffect(() => {
-		onChange && onChange(order);
-	}, [order]);
-
 	return (
 		<div>
 			<SelectControl
@@ -18,7 +14,10 @@ const SelectOrder = ({ onChange, defaultValue = "DESC" }) => {
 					{ label: "DESC", value: "DESC" },
 					{ label: "ASC", value: "ASC" },
 				]}
-				onChange={setOrder}
+				onChange={(e) => {
+					setOrder(e);
+					onChange && onChange(e);
+				}}
 			/>
 		</div>
 	);

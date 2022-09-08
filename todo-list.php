@@ -80,7 +80,18 @@ function ncmazcorePluginEnqueueScript()
 function create_block_todo_list_block_init()
 {
 	register_block_type(__DIR__ . '/build');
+	register_block_type(__DIR__ . '/build/block-become-author');
 	register_block_type(__DIR__ . '/build/block-magazine');
+	register_block_type(__DIR__ . '/build/block-newsletter');
 	register_block_type(__DIR__ . '/build/block-posts-grid');
+	register_block_type(__DIR__ . '/build/block-posts-slider');
+	register_block_type(__DIR__ . '/build/block-terms-grid');
+	register_block_type(__DIR__ . '/build/block-terms-slider');
+	register_block_type(__DIR__ . '/build/block-users-grid');
+	register_block_type(__DIR__ . '/build/block-users-slider');
+	register_block_type(__DIR__ . '/build/block-videos');
+	register_block_type(__DIR__ . '/build/block-widget-posts');
+	register_block_type(__DIR__ . '/build/block-widget-terms');
+	register_block_type(__DIR__ . '/build/block-widget-users');
 }
 add_action('init', 'create_block_todo_list_block_init');
