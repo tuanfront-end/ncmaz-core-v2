@@ -1,0 +1,20 @@
+.wp-admin.ncmaz-not-custom-page
+	.block-editor-block-list__layout.is-root-container {
+	.wp-block-button {
+		.wp-block-button__link {
+			@apply relative inline-flex items-center justify-center rounded-lg transition-colors text-sm sm:text-base font-medium px-4 py-3 sm:px-6   disabled:bg-opacity-70 bg-primary-6000 hover:bg-primary-700 text-neutral-50  focus:outline-none no-underline;
+		}
+
+		&.is-style-outline {
+			.wp-block-button__link {
+				@apply bg-white border-primary-6000 text-neutral-800 hover:bg-primary-6000 hover:text-white;
+			}
+		}
+
+		&.is-style-squared {
+			.wp-block-button__link {
+				@apply rounded-none;
+			}
+		}
+	}
+}

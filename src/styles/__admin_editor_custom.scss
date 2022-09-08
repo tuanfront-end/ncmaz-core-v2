@@ -1,0 +1,136 @@
+html .mce-content-body {
+	line-height: 1.7777778;
+}
+
+.wp-admin {
+	img {
+		border-style: none;
+	}
+	[data-type^="ncmaz-core"] {
+		img {
+			@apply border-0 border-none;
+		}
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			li {
+				list-style: none;
+			}
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		p {
+			&:not([class*="my-"]) {
+				@apply my-0;
+			}
+		}
+	}
+
+	// POST AND PAGE ADMIN EDITOR
+	.wp-block.editor-post-title.editor-post-title__block {
+		@apply max-w-screen-md w-screen #{!important};
+	}
+	.block-editor-block-list__layout.is-root-container {
+		> * {
+			@apply max-w-screen-md w-screen mx-auto #{!important};
+		}
+	}
+
+	//MY CUSTOM PAGE
+	&.ncmaz-custom-page {
+		.wp-block.editor-post-title.editor-post-title__block {
+			@apply container #{!important};
+		}
+
+		.block-editor-block-list__layout.is-root-container {
+			> * {
+				@apply container #{!important};
+			}
+		}
+	}
+
+	// === TITLE ADMIN EDITOR
+	.wp-block.editor-post-title.editor-post-title__block {
+		.editor-post-title__input {
+			@apply text-3xl md:text-4xl lg:text-5xl text-neutral-900 my-5 font-semibold max-w-4xl font-display #{!important};
+			line-height: 1.2 !important;
+		}
+	}
+}
+
+//
+.wp-admin #wpwrap .block-editor-block-list__layout.is-root-container {
+	.wp-block {
+		max-width: unset;
+	}
+}
+//
+//
+
+// FOR TYPE = POST ============================
+.prose {
+	input[type="submit"] {
+		@apply px-3 py-2;
+	}
+}
+//
+.wp-admin.ncmaz-not-custom-page
+	#wpwrap
+	.block-editor-block-list__layout.is-root-container {
+	@apply prose prose-sm sm:prose lg:prose-lg  mx-auto text-neutral-700 font-body max-w-screen-md;
+	max-width: unset;
+
+	.block-editor-block-list__layout {
+		overflow: hidden;
+	}
+
+	[data-type^="ncmaz-core"] {
+		img {
+			@apply border-0 border-none;
+		}
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			li {
+				list-style: none;
+			}
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		p {
+			&:not([class*="my-"]) {
+				@apply my-0;
+			}
+		}
+	}
+
+	a.wp-block-button__link {
+		@apply text-white no-underline;
+	}
+	img,
+	embed,
+	iframe,
+	video {
+		@apply max-w-full;
+	}
+	video,
+	iframe {
+		@apply w-full;
+	}
+	h1 + * {
+		@apply xl:mt-0;
+	}
+	h5 {
+		margin-bottom: 0.444em;
+	}
+}
