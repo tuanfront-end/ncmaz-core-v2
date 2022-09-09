@@ -676,6 +676,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -1039,15 +1042,7 @@ __webpack_require__.r(__webpack_exports__);
 
  //
 
-const {
-  Fragment
-} = wp.element;
-const {
-  withSelect
-} = wp.data;
-const {
-  __
-} = wp.i18n; //
+console.log(123456789, "-------- FIRST INDEX MAIN JS -------"); //
 
 const cache = new _apollo_client__WEBPACK_IMPORTED_MODULE_5__.InMemoryCache({
   addTypename: false,
@@ -12270,7 +12265,7 @@ if (hasSymbols()) {
   \*************************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"ncmaz-core/block-videos","version":"0.1.0","title":"ncmaz block videos","category":"widgets","icon":"smiley","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"todo-list","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"ncmaz-core/block-videos","version":"0.1.0","title":"ncmaz block videos","category":"widgets","icon":"smiley","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"ncmaz-core","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
@@ -12387,7 +12382,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"block-videos/index": 0,
-/******/ 			"./style-index": 0,
+/******/ 			"block-become-author/style-index": 0,
 /******/ 			"block-videos/style-index": 0
 /******/ 		};
 /******/ 		
@@ -12440,7 +12435,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["./style-index","block-videos/style-index"], function() { return __webpack_require__("./src/block-videos/index.js"); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["block-become-author/style-index","block-videos/style-index"], function() { return __webpack_require__("./src/block-videos/index.js"); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

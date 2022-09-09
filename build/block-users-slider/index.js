@@ -6641,6 +6641,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "lodash");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -6804,13 +6807,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const SelectOrder = _ref => {
   let {
     onChange,
     defaultValue = "DESC"
   } = _ref;
-  const [order, setOrder] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultValue);
+  const [order, setOrder] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(defaultValue);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
     label: "Order",
     value: order,
@@ -8100,15 +8102,7 @@ __webpack_require__.r(__webpack_exports__);
 
  //
 
-const {
-  Fragment
-} = wp.element;
-const {
-  withSelect
-} = wp.data;
-const {
-  __
-} = wp.i18n; //
+console.log(123456789, "-------- FIRST INDEX MAIN JS -------"); //
 
 const cache = new _apollo_client__WEBPACK_IMPORTED_MODULE_5__.InMemoryCache({
   addTypename: false,
@@ -29669,7 +29663,7 @@ if (hasSymbols()) {
   \*******************************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"ncmaz-core/block-users-slider","version":"0.1.0","title":"ncmaz block users slider","category":"widgets","icon":"smiley","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"todo-list","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"ncmaz-core/block-users-slider","version":"0.1.0","title":"ncmaz block users slider","category":"widgets","icon":"smiley","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"ncmaz-core","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
@@ -29828,7 +29822,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"block-users-slider/index": 0,
-/******/ 			"./style-index": 0,
+/******/ 			"block-become-author/style-index": 0,
 /******/ 			"block-users-slider/style-index": 0
 /******/ 		};
 /******/ 		
@@ -29881,7 +29875,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["./style-index","block-users-slider/style-index"], function() { return __webpack_require__("./src/block-users-slider/index.js"); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["block-become-author/style-index","block-users-slider/style-index"], function() { return __webpack_require__("./src/block-users-slider/index.js"); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

@@ -23,8 +23,8 @@ registerBlockType(metadata.name, {
 			</Suspense>
 		</ApolloProvider>
 	),
-	save,
-	attributes: {
+	// save,
+	attributes____: {
 		...BLOCK_USER_ATTRIBUTES_COMMON,
 	},
 });

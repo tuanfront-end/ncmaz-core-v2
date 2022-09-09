@@ -19,8 +19,8 @@ registerBlockType(metadata.name, {
 			</Suspense>
 		</ApolloProvider>
 	),
-	save,
-	attributes: {
+	// save,
+	attributes______: {
 		...BLOCK_POST_ATTRIBUTES_COMMON,
 		blockLayoutStyle: { type: "string", default: "layout-1" },
 		postCardName: { type: "string", default: "card4" },

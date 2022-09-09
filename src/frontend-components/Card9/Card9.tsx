@@ -16,15 +16,8 @@ const Card9 = ({
 	hoverClass = "",
 	isSkeleton,
 }) => {
-	const {
-		title,
-		link,
-		featuredImage,
-		categories,
-		author,
-		date,
-		postFormats,
-	} = post;
+	const { title, link, featuredImage, categories, author, date, postFormats } =
+		post;
 
 	const renderMeta = () => {
 		return (
@@ -40,7 +33,9 @@ const Card9 = ({
 							{author?.node.name}
 						</span>
 						<span className="mx-[6px] font-medium">·</span>
-						<span className="font-normal flex-shrink-0">{ncFormatDate(date)}</span>
+						<span className="font-normal flex-shrink-0">
+							{ncFormatDate(date)}
+						</span>
 					</div>
 				</a>
 			</div>

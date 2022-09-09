@@ -68,14 +68,8 @@ export default function Edit(props: EditProps<Props>) {
 	} = attributes;
 
 	//
-	const {
-		GQL_QUERY__string_text,
-		data,
-		dataLists,
-		error,
-		loading,
-		variables,
-	} = useUserGqlQuery(attributes);
+	const { GQL_QUERY__string_text, data, dataLists, error, loading, variables } =
+		useUserGqlQuery(attributes);
 	const usersList = dataLists;
 	// ---- SAVE graphQLvariables ----
 	useEffect(() => {

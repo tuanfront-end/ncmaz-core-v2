@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "@wordpress/element";
+import { useState, useEffect } from "react";
 import { SelectControl } from "@wordpress/components";
 
 const SelectPostFormat = ({ onChange, defaultValue }) => {

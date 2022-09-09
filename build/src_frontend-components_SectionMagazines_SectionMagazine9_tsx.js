@@ -559,7 +559,7 @@ const PostTypeFeaturedIcon = _ref => {
   } = _ref;
 
   const renderMediaIcon = () => {
-    if (postType.includes('video')) {
+    if (postType.includes("video")) {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         className: iconSize,
         viewBox: "0 0 24 24",
@@ -575,7 +575,7 @@ const PostTypeFeaturedIcon = _ref => {
       }));
     }
 
-    if (postType.includes('audio')) {
+    if (postType.includes("audio")) {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         className: iconSize,
         viewBox: "0 0 24 24",
@@ -614,7 +614,7 @@ const PostTypeFeaturedIcon = _ref => {
       }));
     }
 
-    if (postType.includes('gallery')) {
+    if (postType.includes("gallery")) {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         className: iconSize,
         viewBox: "0 0 24 24",

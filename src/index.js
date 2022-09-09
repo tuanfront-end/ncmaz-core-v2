@@ -15,13 +15,10 @@ import "./style.css";
 import "./styles/index.scss";
 import "@glidejs/glide/dist/css/glide.core.min.css";
 
-console.log(999999);
+//
+console.log(123456789, "-------- FIRST INDEX MAIN JS -------");
+//
 
-//
-const { Fragment } = wp.element;
-const { withSelect } = wp.data;
-const { __ } = wp.i18n;
-//
 const cache = new InMemoryCache({
 	addTypename: false,
 	typePolicies: {
@@ -88,7 +85,6 @@ export const ATTR_SETTINGS_SLIDER = {
 	sliderAnimationDuration: { type: "number", default: 400 },
 	sliderRewind: { type: "boolean", default: true },
 };
-
 export const BLOCK_TERM_ATTRIBUTES_COMMON = {
 	blockLayoutStyle: { type: "string", default: "layout-1" },
 	termCardName: { type: "string", default: "card2" },

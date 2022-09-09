@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "@wordpress/element";
+import React, { useState, useEffect } from "react";
 import { SelectControl } from "@wordpress/components";
 
 const SelectOrder = ({ onChange, defaultValue = "DESC" }) => {

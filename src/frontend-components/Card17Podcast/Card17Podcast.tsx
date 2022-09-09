@@ -108,7 +108,8 @@ const Card17Podcast = ({ className = "", post, isSkeleton }) => {
 				</div>
 			</a>
 
-			{(postFormatName === "post-format-video" || postFormatName === "post-format-audio") &&
+			{(postFormatName === "post-format-video" ||
+				postFormatName === "post-format-audio") &&
 				renderDefaultBtnListen()}
 		</div>
 	);

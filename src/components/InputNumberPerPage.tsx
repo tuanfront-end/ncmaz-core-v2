@@ -1,6 +1,6 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
-import { useState, useEffect } from "@wordpress/element";
+import { useState, useEffect } from "react";
 import { RangeControl } from "@wordpress/components";
 
 const InputNumberPerPage = ({ onChange, defaultValue = 6 }) => {

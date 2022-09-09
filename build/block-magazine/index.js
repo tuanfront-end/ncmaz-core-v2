@@ -2434,7 +2434,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const SectionMagazine1Lazy = (0,react__WEBPACK_IMPORTED_MODULE_1__.lazy)(() => __webpack_require__.e(/*! import() */ "src_frontend-components_SectionMagazines_SectionMagazine1_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../frontend-components/SectionMagazines/SectionMagazine1 */ "./src/frontend-components/SectionMagazines/SectionMagazine1.tsx")));
 const SectionMagazine2Lazy = (0,react__WEBPACK_IMPORTED_MODULE_1__.lazy)(() => __webpack_require__.e(/*! import() */ "src_frontend-components_SectionMagazines_SectionMagazine2_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../frontend-components/SectionMagazines/SectionMagazine2 */ "./src/frontend-components/SectionMagazines/SectionMagazine2.tsx")));
 const SectionMagazine3Lazy = (0,react__WEBPACK_IMPORTED_MODULE_1__.lazy)(() => __webpack_require__.e(/*! import() */ "src_frontend-components_SectionMagazines_SectionMagazine3_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../frontend-components/SectionMagazines/SectionMagazine3 */ "./src/frontend-components/SectionMagazines/SectionMagazine3.tsx")));
@@ -2480,7 +2479,7 @@ function BlockMagazineEdit(props) {
     handleClickTab
   } = (0,_hooks_usePostGqlQuery__WEBPACK_IMPORTED_MODULE_16__["default"])(attributes); // ---- SAVE graphQLvariables ----
 
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     if (!data) return;
     setAttributes({
       graphQLvariables: {
@@ -2817,8 +2816,8 @@ __webpack_require__.r(__webpack_exports__);
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_6__.Suspense, {
     fallback: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.Spinner, null)
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_edit__WEBPACK_IMPORTED_MODULE_3__["default"], props))),
-  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"],
-  attributes: {
+  // save,
+  attributes____: {
     sectionName: {
       type: "string",
       default: "magazine-1"
@@ -2921,7 +2920,7 @@ const InputNumberPerPage = _ref => {
     onChange,
     defaultValue = 6
   } = _ref;
-  const [perPage, setPerPage] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultValue);
+  const [perPage, setPerPage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(defaultValue);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "w-full space-y-1"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Number per page", "ncmaz-core")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
@@ -3325,13 +3324,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const SelectOrder = _ref => {
   let {
     onChange,
     defaultValue = "DESC"
   } = _ref;
-  const [order, setOrder] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultValue);
+  const [order, setOrder] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(defaultValue);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
     label: "Order",
     value: order,
@@ -3376,7 +3374,7 @@ const SelectOrderBy = _ref => {
     onChange,
     defaultValue = "date"
   } = _ref;
-  const [orderBy, setOrderBy] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultValue);
+  const [orderBy, setOrderBy] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(defaultValue);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
     label: "Order By",
     value: orderBy,
@@ -4506,15 +4504,7 @@ __webpack_require__.r(__webpack_exports__);
 
  //
 
-const {
-  Fragment
-} = wp.element;
-const {
-  withSelect
-} = wp.data;
-const {
-  __
-} = wp.i18n; //
+console.log(123456789, "-------- FIRST INDEX MAIN JS -------"); //
 
 const cache = new _apollo_client__WEBPACK_IMPORTED_MODULE_5__.InMemoryCache({
   addTypename: false,
@@ -26075,7 +26065,7 @@ if (hasSymbols()) {
   \***************************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"ncmaz-core/block-magazine","version":"0.1.0","title":"ncmaz block magazine","category":"widgets","icon":"smiley","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"todo-list","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"ncmaz-core/block-magazine","version":"0.1.0","title":"ncmaz block magazine","category":"widgets","icon":"smiley","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"ncmaz-core","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
@@ -26331,7 +26321,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"block-magazine/index": 0,
-/******/ 			"./style-index": 0,
+/******/ 			"block-become-author/style-index": 0,
 /******/ 			"block-magazine/style-index": 0
 /******/ 		};
 /******/ 		
@@ -26344,7 +26334,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 					if(installedChunkData) {
 /******/ 						promises.push(installedChunkData[2]);
 /******/ 					} else {
-/******/ 						if(!/^(\.|block\-magazine)\/style\-index$/.test(chunkId)) {
+/******/ 						if(!/^block\-(become\-author|magazine)\/style\-index$/.test(chunkId)) {
 /******/ 							// setup Promise in chunk cache
 /******/ 							var promise = new Promise(function(resolve, reject) { installedChunkData = installedChunks[chunkId] = [resolve, reject]; });
 /******/ 							promises.push(installedChunkData[2] = promise);
@@ -26421,7 +26411,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["./style-index","block-magazine/style-index"], function() { return __webpack_require__("./src/block-magazine/index.js"); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["block-become-author/style-index","block-magazine/style-index"], function() { return __webpack_require__("./src/block-magazine/index.js"); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

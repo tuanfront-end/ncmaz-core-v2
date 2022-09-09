@@ -18,15 +18,8 @@ const Card14 = ({
 	hoverClass = "",
 	isSkeleton,
 }) => {
-	const {
-		title,
-		link,
-		featuredImage,
-		categories,
-		author,
-		date,
-		postFormats,
-	} = post;
+	const { title, link, featuredImage, categories, author, date, postFormats } =
+		post;
 	const postType = postFormats.edges[0]?.node.slug;
 	return (
 		<div

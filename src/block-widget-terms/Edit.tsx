@@ -43,14 +43,8 @@ export default function Edit(props: EditProps<Props>) {
 
 	//
 
-	const {
-		GQL_QUERY__string_text,
-		data,
-		dataLists,
-		error,
-		loading,
-		variables,
-	} = useTermGqlQuery(attributes);
+	const { GQL_QUERY__string_text, data, dataLists, error, loading, variables } =
+		useTermGqlQuery(attributes);
 
 	// ---- SAVE graphQLvariables ----
 	useEffect(() => {

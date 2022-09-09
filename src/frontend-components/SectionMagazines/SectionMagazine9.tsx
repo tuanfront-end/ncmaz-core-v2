@@ -5,7 +5,9 @@ import Card9 from "../Card9/Card9";
 const SectionMagazine9 = ({ activePosts, isLoading }) => {
 	return (
 		<div>
-			<div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8`}>
+			<div
+				className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8`}
+			>
 				{activePosts[0] && (
 					<Card9
 						isSkeleton={isLoading}
@@ -28,7 +30,9 @@ const SectionMagazine9 = ({ activePosts, isLoading }) => {
 					/>
 				)}
 			</div>
-			<div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-8`}>
+			<div
+				className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-8`}
+			>
 				{activePosts
 					.filter((_, i) => i > 2)
 					.map((p) => (

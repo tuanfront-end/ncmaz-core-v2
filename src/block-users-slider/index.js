@@ -24,8 +24,8 @@ registerBlockType(metadata.name, {
 			</Suspense>
 		</ApolloProvider>
 	),
-	save,
-	attributes: {
+	// save,
+	attributes____: {
 		...ATTR_SETTINGS_SLIDER,
 		...BLOCK_USER_ATTRIBUTES_COMMON,
 	},

@@ -3,7 +3,7 @@ import { __ } from "@wordpress/i18n";
 import InputSearchPosts from "../components/InputSearchPosts";
 import InputSearchCategories from "../components/InputSearchCategories";
 import InputSearchTags from "../components/InputSearchTags";
-import { useEffect, useState } from "@wordpress/element";
+import { useEffect, useState } from "react";
 import {
 	TextControl,
 	Panel,

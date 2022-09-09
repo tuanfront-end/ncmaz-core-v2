@@ -38,14 +38,8 @@ export interface AuthorNode {
 }
 
 export default function useUserGqlQuery(attributes: BlockUserAttributesCommon) {
-	const {
-		filterDataBy,
-		numberPerPage,
-		order,
-		orderBy,
-		userIds,
-		roleIn,
-	} = attributes;
+	const { filterDataBy, numberPerPage, order, orderBy, userIds, roleIn } =
+		attributes;
 	//
 	let GQL_QUERY__string = "";
 	let GQL_QUERY__string_text = "";

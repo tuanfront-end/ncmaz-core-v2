@@ -19,8 +19,8 @@ registerBlockType(metadata.name, {
 			</Suspense>
 		</ApolloProvider>
 	),
-	save,
-	attributes: {
+	// save,
+	attributes____: {
 		blockLayoutStyle: { type: "string", default: "layout-1" },
 		postCardName: { type: "string", default: "card4" },
 		sectionId: { type: "string", default: "gutenberg_section_id" },

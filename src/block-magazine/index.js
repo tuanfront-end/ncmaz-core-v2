@@ -19,8 +19,8 @@ registerBlockType(metadata.name, {
 			</Suspense>
 		</ApolloProvider>
 	),
-	save,
-	attributes: {
+	// save,
+	attributes____: {
 		sectionName: { type: "string", default: "magazine-1" },
 		//
 		...BLOCK_POST_ATTRIBUTES_COMMON,

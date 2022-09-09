@@ -24,8 +24,8 @@ registerBlockType(metadata.name, {
 			</Suspense>
 		</ApolloProvider>
 	),
-	save,
-	attributes: {
+	// save,
+	attributes____: {
 		sectionId: { type: "string", default: "gutenberg_section_term_slider" },
 		...ATTR_SETTINGS_SLIDER,
 		...BLOCK_TERM_ATTRIBUTES_COMMON,
