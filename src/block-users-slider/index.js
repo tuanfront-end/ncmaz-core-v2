@@ -4,17 +4,12 @@ import "./style.scss";
  * Internal dependencies
  */
 import Edit from "./edit";
-import save from "./save";
+// import save from "./save";
 import metadata from "./block.json";
 import { ApolloProvider } from "@apollo/client";
 import { Suspense } from "react";
-import {
-	ATTR_SETTINGS_SLIDER,
-	BLOCK_POST_ATTRIBUTES_COMMON,
-	BLOCK_USER_ATTRIBUTES_COMMON,
-	client,
-} from "..";
 import { Spinner } from "@wordpress/components";
+import { client } from "../main";
 
 registerBlockType(metadata.name, {
 	edit: (props) => (
@@ -25,8 +20,8 @@ registerBlockType(metadata.name, {
 		</ApolloProvider>
 	),
 	// save,
-	attributes____: {
-		...ATTR_SETTINGS_SLIDER,
-		...BLOCK_USER_ATTRIBUTES_COMMON,
-	},
+	// attributes____: {
+	// 	...ATTR_SETTINGS_SLIDER,
+	// 	...BLOCK_USER_ATTRIBUTES_COMMON,
+	// },
 });

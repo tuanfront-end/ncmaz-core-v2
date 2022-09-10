@@ -9,4 +9,5 @@
 	background-color: #21759b;
 	color: #fff;
 	padding: 2px;
+	@apply text-ellipsis col-auto border-collapse border-r border-red-300 bg-slate-50 flex flex-1 justify-start;
 }

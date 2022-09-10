@@ -50,7 +50,7 @@ const safelist = [
 
 module.exports = {
 	important: true,
-	content: ["./src/**/*.{js,jsx,ts,tsx}", "./*.php"],
+	content: ["./src/**/*.{ts,tsx}", "./*.php"],
 
 	safelist,
 	darkMode: "class", // or 'media' or 'class',

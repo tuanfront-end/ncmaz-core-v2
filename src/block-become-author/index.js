@@ -8,8 +8,13 @@ import save from "./save";
 import metadata from "./block.json";
 import { ApolloProvider } from "@apollo/client";
 import { Suspense } from "react";
-import { BLOCK_POST_ATTRIBUTES_COMMON, client } from "..";
 import { Spinner } from "@wordpress/components";
+
+//------------------ TAILWINDCSS AND COMMON CSS -----------------
+import "../style.css";
+import "../styles/index.scss";
+import "@glidejs/glide/dist/css/glide.core.min.css";
+//-----------------------------------------
 
 //
 const { Fragment } = wp.element;

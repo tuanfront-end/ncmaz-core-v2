@@ -8,7 +8,6 @@ import save from "./save";
 import metadata from "./block.json";
 import { ApolloProvider } from "@apollo/client";
 import { Suspense } from "react";
-import { BLOCK_POST_ATTRIBUTES_COMMON, client } from "..";
 import { Spinner } from "@wordpress/components";
 
 //
