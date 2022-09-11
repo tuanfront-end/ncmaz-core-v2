@@ -77,6 +77,8 @@ export interface BlockPostAttributesCommon {
 	graphQLvariables: Record<string, any>;
 	graphQLData: Record<string, any>;
 	expectedNumberResults: number;
+	//
+	hasSSrInitData: boolean;
 }
 
 export type EditProps<T> = {
@@ -107,7 +109,10 @@ export default function BlockMagazineEdit(
 		heading,
 		subHeading,
 		hasBackground,
+		hasSSrInitData,
 	} = attributes;
+
+	console.log(99999999999, "MAGAZINE");
 
 	const {
 		GQL_QUERY__string,
@@ -123,7 +128,9 @@ export default function BlockMagazineEdit(
 
 	// ---- SAVE graphQLvariables ----
 	useEffect(() => {
-		if (!data) return;
+		if (!data) {
+			return;
+		}
 		setAttributes({
 			graphQLvariables: {
 				variables,
@@ -279,6 +286,27 @@ export default function BlockMagazineEdit(
 						</PanelBody>
 						<PanelBody initialOpen={false} title="Filter data settings">
 							<PanelRow>
+								<div>
+									<div className="w-full space-x-3 flex ">
+										<FormToggle
+											checked={hasSSrInitData}
+											onChange={() =>
+												setAttributes({ hasSSrInitData: !hasSSrInitData })
+											}
+											label={__("Has SSR Init Data", "ncmaz-core")}
+										/>
+										<legend>{__("Has SSR Init Data", "ncmaz-core")}</legend>
+									</div>
+									<span className="text-xs block mt-1.5">
+										{__(
+											"If disabled, the block's data will be loaded when the block is rendered on the client side",
+											"ncmaz-core"
+										)}
+									</span>
+								</div>
+							</PanelRow>
+							<hr />
+							<PanelRow>
 								<RadioControl
 									label=""
 									selected={filterDataBy}
@@ -286,7 +314,8 @@ export default function BlockMagazineEdit(
 									onChange={handleChangeFilterDataBy}
 								/>
 							</PanelRow>
-							<div className="border-b border-gray-600 mt-2 mb-4"></div>
+
+							<hr />
 							<PanelRow>{renderFilterPostsContent()}</PanelRow>
 						</PanelBody>
 					</Panel>

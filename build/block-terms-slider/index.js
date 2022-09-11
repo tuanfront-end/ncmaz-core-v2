@@ -6974,10 +6974,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "OPTIONS_FILTER_DATA_BY": function() { return /* binding */ OPTIONS_FILTER_DATA_BY; }
 /* harmony export */ });
 const OPTIONS_FILTER_DATA_BY = [{
-  label: "Select posts by specific",
+  label: "Select data by specific",
   value: "by_specific"
 }, {
-  label: "Select posts by filter",
+  label: "Select data by filter",
   value: "by_filter"
 }];
 
@@ -8295,17 +8295,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "client": function() { return /* binding */ client; }
 /* harmony export */ });
-/* harmony import */ var _apollo_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @apollo/client */ "./node_modules/@apollo/client/cache/inmemory/inMemoryCache.js");
-/* harmony import */ var _apollo_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @apollo/client */ "./node_modules/@apollo/client/link/http/HttpLink.js");
-/* harmony import */ var _apollo_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @apollo/client */ "./node_modules/@apollo/client/core/ApolloClient.js");
-/* harmony import */ var _apollo_client__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @apollo/client */ "./node_modules/@apollo/client/link/core/from.js");
-/* harmony import */ var _apollo_client_link_retry__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @apollo/client/link/retry */ "./node_modules/@apollo/client/link/retry/retryLink.js");
+/* harmony import */ var _apollo_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @apollo/client */ "./node_modules/@apollo/client/cache/inmemory/inMemoryCache.js");
+/* harmony import */ var _apollo_client__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @apollo/client */ "./node_modules/@apollo/client/link/http/HttpLink.js");
+/* harmony import */ var _apollo_client__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @apollo/client */ "./node_modules/@apollo/client/core/ApolloClient.js");
+/* harmony import */ var _apollo_client__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @apollo/client */ "./node_modules/@apollo/client/link/core/from.js");
+/* harmony import */ var _apollo_client_link_retry__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @apollo/client/link/retry */ "./node_modules/@apollo/client/link/retry/retryLink.js");
+/* harmony import */ var _glidejs_glide_dist_css_glide_core_min_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @glidejs/glide/dist/css/glide.core.min.css */ "./node_modules/@glidejs/glide/dist/css/glide.core.min.css");
+/* harmony import */ var _styles_index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/index.scss */ "./src/styles/index.scss");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
 
  //
 
-console.log(123456789, "-------- FIRTS MAIN JS -------"); //
 
-const cache = new _apollo_client__WEBPACK_IMPORTED_MODULE_0__.InMemoryCache({
+
+
+console.log(12345, "-------- FIRTS MAIN JS -------"); //
+
+const cache = new _apollo_client__WEBPACK_IMPORTED_MODULE_3__.InMemoryCache({
   addTypename: false,
   typePolicies: {// Post: {
     // 	keyFields: [
@@ -8326,14 +8332,14 @@ const cache = new _apollo_client__WEBPACK_IMPORTED_MODULE_0__.InMemoryCache({
     // },
   }
 });
-const link = new _apollo_client_link_retry__WEBPACK_IMPORTED_MODULE_1__.RetryLink();
-const httpLink = new _apollo_client__WEBPACK_IMPORTED_MODULE_2__.HttpLink({
+const link = new _apollo_client_link_retry__WEBPACK_IMPORTED_MODULE_4__.RetryLink();
+const httpLink = new _apollo_client__WEBPACK_IMPORTED_MODULE_5__.HttpLink({
   uri: ncmazcoreJsData.graphQLBasePath
 });
-const client = new _apollo_client__WEBPACK_IMPORTED_MODULE_3__.ApolloClient({
+const client = new _apollo_client__WEBPACK_IMPORTED_MODULE_6__.ApolloClient({
   uri: ncmazcoreJsData.graphQLBasePath,
   cache,
-  link: (0,_apollo_client__WEBPACK_IMPORTED_MODULE_4__.from)([link, httpLink])
+  link: (0,_apollo_client__WEBPACK_IMPORTED_MODULE_7__.from)([link, httpLink])
 });
 
 /***/ }),
@@ -8857,10 +8863,46 @@ function memoizeOne(resultFn, isEqual) {
 
 /***/ }),
 
+/***/ "./node_modules/@glidejs/glide/dist/css/glide.core.min.css":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@glidejs/glide/dist/css/glide.core.min.css ***!
+  \*****************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/style.css":
+/*!***********************!*\
+  !*** ./src/style.css ***!
+  \***********************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./src/block-terms-slider/style.scss":
 /*!*******************************************!*\
   !*** ./src/block-terms-slider/style.scss ***!
   \*******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/styles/index.scss":
+/*!*******************************!*\
+  !*** ./src/styles/index.scss ***!
+  \*******************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29773,6 +29815,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"block-terms-slider/index": 0,
+/******/ 			"block-become-author/style-index": 0,
 /******/ 			"block-terms-slider/style-index": 0
 /******/ 		};
 /******/ 		
@@ -29825,7 +29868,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["block-terms-slider/style-index"], function() { return __webpack_require__("./src/block-terms-slider/index.js"); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["block-become-author/style-index","block-terms-slider/style-index"], function() { return __webpack_require__("./src/block-terms-slider/index.js"); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

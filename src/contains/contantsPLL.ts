@@ -62,7 +62,6 @@ const GQL_QUERY_GET_POSTS_BY_SPECIFIC = !IS_ENABLE_PLL
 `;
 
 // ===================== TERMS - TAGS | CATEGORIES =========================================
-
 const GQL_QUERY_GET_CATEGORIES_BY_FILTER = !IS_ENABLE_PLL
 	? ""
 	: `

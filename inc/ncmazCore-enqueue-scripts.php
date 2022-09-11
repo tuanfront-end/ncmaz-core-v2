@@ -48,6 +48,27 @@ function ncmazcorePluginEnqueueScript()
             'homeURL'                   => get_site_url(),
             'pll_current_language'        => function_exists('pll_current_language') ? strtoupper(pll_current_language()) : null,
             'pll_themeoption_actived'     => boolval($ncmaz_redux_demo['nc-general-settings--general-switch-polylang']) ? 'true' : null,
+            'gqlQueries'                => (object)[
+                'NCMAZCORE_PLL_CURRENT_LANGUAGE'        => $NCMAZCORE_PLL_CURRENT_LANGUAGE,
+                'NCMAZCORE_PLL_THEMEOPTION_ACTIVED'     => $NCMAZCORE_PLL_THEMEOPTION_ACTIVED,
+                'IS_ENABLE_PLL'                         => $IS_ENABLE_PLL,
+                'EDGES_POST_COMMONT_FIELDS'             => $EDGES_POST_COMMONT_FIELDS,
+                'EDGES_USER_COMMONT_FIELDS'             => $EDGES_USER_COMMONT_FIELDS,
+                'EDGES_TERMS_COMMONT_FIELDS'            => $EDGES_TERMS_COMMONT_FIELDS,
+                //  
+                'GQL_QUERY_GET_POSTS_BY_FILTER'         => $GQL_QUERY_GET_POSTS_BY_FILTER,
+                'GQL_QUERY_GET_POSTS_BY_SPECIFIC'       => $GQL_QUERY_GET_POSTS_BY_SPECIFIC,
+                'GQL_QUERY_GET_USERS_BY_FILTER'         => $GQL_QUERY_GET_USERS_BY_FILTER,
+                'GQL_QUERY_GET_USERS_BY_SPECIFIC'       => $GQL_QUERY_GET_USERS_BY_SPECIFIC,
+                'GQL_QUERY_GET_CATEGORIES_BY_FILTER'    => $GQL_QUERY_GET_CATEGORIES_BY_FILTER,
+                'GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC'  => $GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC,
+                'GQL_QUERY_GET_TAGS_BY_FILTER'          => $GQL_QUERY_GET_TAGS_BY_FILTER,
+                'GQL_QUERY_GET_TAGS_BY_SPECIFIC'        => $GQL_QUERY_GET_TAGS_BY_SPECIFIC,
+                'GQL_QUERY_SEARCH_POSTS'                => $GQL_QUERY_SEARCH_POSTS,
+                'GQL_QUERY_SEARCH_USER'                 => $GQL_QUERY_SEARCH_USER,
+                'GQL_QUERY_SEARCH_CATEGORIES'           => $GQL_QUERY_SEARCH_CATEGORIES,
+                'GQL_QUERY_SEARCH_TAGS'                 => $GQL_QUERY_SEARCH_TAGS,
+            ]
         ]
     ), 'before');
 }

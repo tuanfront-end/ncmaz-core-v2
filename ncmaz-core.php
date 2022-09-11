@@ -17,7 +17,14 @@
 if (!defined('_NCMAZ_CORE_VERSION')) {
 	define('_NCMAZ_CORE_VERSION', '2.2.0');
 }
-require plugin_dir_path(__FILE__) . 'inc/ncmaz-enqueue-scripts.php';
+
+require plugin_dir_path(__FILE__) . 'inc/ncmazCore_contantsCommon.php';
+require plugin_dir_path(__FILE__) . 'inc/ncmazCore_contantsPLL.php';
+require plugin_dir_path(__FILE__) . 'inc/ncmazCore_contants.php';
+require plugin_dir_path(__FILE__) . 'inc/ncmazCore-custom-funcs.php';
+// 
+require plugin_dir_path(__FILE__) . 'inc/ncmazCore-enqueue-scripts.php';
+require plugin_dir_path(__FILE__) . 'inc/ncmazCore-blocks-render-callback.php';
 
 //============================================================================================================================================
 // START REGISTER GUTENBERG BLOCKS
@@ -28,6 +35,12 @@ function ncmazCore_create_blocks_gutenberg_init()
 {
 
 	$BLOCK_POST_ATTRIBUTES_COMMON = [
+		"hasSSrInitData" => [
+			"type" 		=> "boolean",
+			"default" 	=> true
+		],
+
+		// 
 		"filterDataBy" => [
 			"type" => "string",
 			"default" => "by_filter"
@@ -91,26 +104,6 @@ function ncmazCore_create_blocks_gutenberg_init()
 		"expectedNumberResults" => [
 			"type" => "number",
 			"default" => 8
-		],
-	];
-	$ATTR_SETTINGS_SLIDER = [
-		"itemPerView" => [
-			"type" => "number", "default" => 4
-		],
-		"sliderStartAt" => [
-			"type" => "number", "default" => 0
-		],
-		"sliderAutoplayTime" => [
-			"type" => "number", "default" => 0
-		],
-		"sliderHoverpause" => [
-			"type" => "boolean", "default" => false
-		],
-		"sliderAnimationDuration" => [
-			"type" => "number", "default" => 400
-		],
-		"sliderRewind" => [
-			"type" => "boolean", "default" => true
 		],
 	];
 	$BLOCK_TERM_ATTRIBUTES_COMMON = [
@@ -205,6 +198,26 @@ function ncmazCore_create_blocks_gutenberg_init()
 			"type" => "number", "default" => 8
 		],
 	];
+	$ATTR_SETTINGS_SLIDER = [
+		"itemPerView" => [
+			"type" => "number", "default" => 4
+		],
+		"sliderStartAt" => [
+			"type" => "number", "default" => 0
+		],
+		"sliderAutoplayTime" => [
+			"type" => "number", "default" => 0
+		],
+		"sliderHoverpause" => [
+			"type" => "boolean", "default" => false
+		],
+		"sliderAnimationDuration" => [
+			"type" => "number", "default" => 400
+		],
+		"sliderRewind" => [
+			"type" => "boolean", "default" => true
+		],
+	];
 
 	// 
 	register_block_type(__DIR__ . '/build/block-become-author', [
@@ -218,6 +231,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 	register_block_type(__DIR__ . '/build/block-newsletter', [
 		'style'         => null,
 	]);
+
 	//  ======== block-magazine =================
 	register_block_type(__DIR__ . '/build/block-magazine', [
 		"render_callback" 	=> "render_callback_block_magazine",
@@ -378,276 +392,4 @@ function ncmazCore_create_blocks_gutenberg_init()
 			'style'         => null,
 		]
 	);
-}
-
-//================================================================================================================================================
-// START FUNCTIONS RENDER CALLBACK
-//==============================================================================================================================================
-
-//=============================================render_callback_block_widget_users===============================================================
-function render_callback_block_widget_users($attributes)
-{
-	ob_start();
-	$ncGutenbergSectionsData = (object)[
-		"blockName" 		=> "nc-block-widget-users",
-		"graphQLvariables" 	=> $attributes["graphQLvariables"],
-		"settings" 			=> (object)[
-			"heading" 				=> $attributes["heading"],
-			"expectedNumberResults" => $attributes["expectedNumberResults"],
-		]
-	];
-?>
-	<div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-widget-users" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
-<?php
-	$output = ob_get_contents(); // collect output
-	ob_end_clean(); // Turn off ouput buffer
-	return $output; // Print output
-}
-
-// =============================================render_callback_block_widget_terms=====================================================================
-function render_callback_block_widget_terms($attributes)
-{
-	ob_start();
-	$ncGutenbergSectionsData = (object)[
-		"blockName" 		=> "nc-block-widget-terms",
-		"graphQLvariables" 	=> $attributes["graphQLvariables"],
-		"settings" 			=> (object)[
-			"termCardName" 			=> $attributes["termCardName"],
-			"heading" 				=> $attributes["heading"],
-			"expectedNumberResults" => $attributes["expectedNumberResults"],
-		]
-	];
-?>
-	<div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-widget-terms" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
-<?php
-	$output = ob_get_contents(); // collect output
-	ob_end_clean(); // Turn off ouput buffer
-	return $output; // Print output
-}
-
-// =============================================render_callback_block_widget_posts=====================================================================
-function render_callback_block_widget_posts($attributes, $content)
-{
-	ob_start();
-	$ncGutenbergSectionsData = (object)[
-		"blockName" 		=> "nc-block-widget-posts",
-		"graphQLvariables" 	=> $attributes["graphQLvariables"],
-		"settings" 			=> (object)[
-			"postCardName" 			=> $attributes["postCardName"],
-			"heading" 				=> $attributes["heading"],
-			"expectedNumberResults" => $attributes["expectedNumberResults"],
-		]
-	];
-?>
-	<div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-widget-posts" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
-<?php
-	$output = ob_get_contents(); // collect output
-	ob_end_clean(); // Turn off ouput buffer
-	return $output; // Print output
-}
-
-// =============================================render_callback_block_users_slider=====================================================================
-function render_callback_block_users_slider($attributes)
-{
-	ob_start();
-	$ncGutenbergSectionsData = (object)[
-		"blockName" 		=> "nc-block-terms-slider",
-		"graphQLvariables" 	=> $attributes["graphQLvariables"],
-		"settings" 			=> (object)[
-			"userCardName" 				=> $attributes["userCardName"],
-			"heading" 					=> $attributes["heading"],
-			"subHeading" 				=> $attributes["subHeading"],
-			"hasBackground" 			=> $attributes["hasBackground"],
-			"blockLayoutStyle" 			=> $attributes["blockLayoutStyle"],
-			// slider settings
-			"itemPerView" 				=> $attributes["itemPerView"],
-			"sliderStartAt" 			=> $attributes["sliderStartAt"],
-			"sliderAutoplayTime" 		=> $attributes["sliderAutoplayTime"],
-			"sliderHoverpause" 			=> $attributes["sliderHoverpause"],
-			"sliderAnimationDuration" 	=> $attributes["sliderAnimationDuration"],
-			"sliderRewind" 				=> $attributes["sliderRewind"],
-			"expectedNumberResults" 	=> $attributes["expectedNumberResults"],
-		],
-	];
-?>
-	<div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-users-slider" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
-<?php
-	$output = ob_get_contents(); // collect output
-	ob_end_clean(); // Turn off ouput buffer
-	return $output; // Print output
-}
-
-// =============================================render_callback_block_users_grid=====================================================================
-function render_callback_block_users_grid($attributes)
-{
-	ob_start();
-	$ncGutenbergSectionsData = (object)[
-		"blockName" 		=> "nc-block-user-grid",
-		"graphQLvariables" 	=> $attributes["graphQLvariables"],
-		"settings" 			=> (object)[
-			"userCardName" 			=> $attributes["userCardName"],
-			"gridClass" 			=> $attributes["gridClass"],
-			"gridClassCustom" 		=> $attributes["gridClassCustom"],
-			"heading" 				=> $attributes["heading"],
-			"subHeading" 			=> $attributes["subHeading"],
-			"hasBackground" 		=> $attributes["hasBackground"],
-			"blockLayoutStyle" 		=> $attributes["blockLayoutStyle"],
-			"expectedNumberResults" => $attributes["expectedNumberResults"],
-		],
-	];
-?>
-	<div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-users-grid" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
-<?php
-	$output = ob_get_contents(); // collect output
-	ob_end_clean(); // Turn off ouput buffer
-	return $output; // Print output
-}
-
-// =============================================render_callback_block_terms_slider=====================================================================
-function render_callback_block_terms_slider($attributes)
-{
-	ob_start();
-	$ncGutenbergSectionsData = (object)[
-		"blockName" 		=> "nc-block-terms-grid",
-		"graphQLvariables" 	=> $attributes["graphQLvariables"],
-		"settings" 			=> (object)[
-			"blockLayoutStyle" 			=> $attributes["blockLayoutStyle"],
-			"termCardName" 				=> $attributes["termCardName"],
-			"heading" 					=> $attributes["heading"],
-			"subHeading" 				=> $attributes["subHeading"],
-			"hasBackground" 			=> $attributes["hasBackground"],
-			// slider settings
-			"itemPerView" 				=> $attributes["itemPerView"],
-			"sliderStartAt" 			=> $attributes["sliderStartAt"],
-			"sliderAutoplayTime" 		=> $attributes["sliderAutoplayTime"],
-			"sliderHoverpause" 			=> $attributes["sliderHoverpause"],
-			"sliderAnimationDuration" 	=> $attributes["sliderAnimationDuration"],
-			"sliderRewind" 				=> $attributes["sliderRewind"],
-			"expectedNumberResults" 	=> $attributes["expectedNumberResults"],
-		],
-	];
-?>
-	<div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-terms-slider" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
-<?php
-	$output = ob_get_contents(); // collect output
-	ob_end_clean(); // Turn off ouput buffer
-	return $output; // Print output
-}
-
-// =============================================render_callback_block_terms_grid=====================================================================
-function render_callback_block_terms_grid($attributes)
-{
-	ob_start();
-	$ncGutenbergSectionsData = (object)[
-		"blockName" 		=> "nc-block-terms-grid",
-		"graphQLvariables" 	=> $attributes['graphQLvariables'],
-		"settings" 			=> (object)[
-			"blockLayoutStyle" 		=> $attributes['blockLayoutStyle'],
-			"termCardName" 			=> $attributes['termCardName'],
-			"heading" 				=> $attributes['heading'],
-			"subHeading" 			=> $attributes['subHeading'],
-			"hasBackground" 		=> $attributes['hasBackground'],
-			"gridClass" 			=> $attributes['gridClass'],
-			"gridClassCustom" 		=> $attributes['gridClassCustom'],
-			"expectedNumberResults" => $attributes['expectedNumberResults'],
-		],
-	];
-?>
-	<div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-terms-grid" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
-<?php
-	$output = ob_get_contents(); // collect output
-	ob_end_clean(); // Turn off ouput buffer
-	return $output; // Print output
-}
-
-// =============================================render_callback_block_posts_slider=====================================================================
-function render_callback_block_posts_slider($attributes, $content)
-{
-	ob_start();
-	$ncGutenbergSectionsData = (object)[
-		"blockName" 		=> "nc-block-posts-slider",
-		"graphQLvariables" 	=> $attributes["graphQLvariables"],
-		"settings" 			=> (object)[
-			"blockLayoutStyle" 			=> $attributes["blockLayoutStyle"],
-			"postCardName" 				=> $attributes["postCardName"],
-			"showFilterTab" 			=> $attributes["showFilterTab"],
-			"viewMoreHref" 				=> $attributes["viewMoreHref"],
-			"heading" 					=> $attributes["heading"],
-			"subHeading" 				=> $attributes["subHeading"],
-			"hasBackground" 			=> $attributes["hasBackground"],
-			"categories" 				=> $attributes["categories"],
-			// slider settings
-			"itemPerView" 				=> $attributes["itemPerView"],
-			"sliderStartAt" 			=> $attributes["sliderStartAt"],
-			"sliderAutoplayTime" 		=> $attributes["sliderAutoplayTime"],
-			"sliderHoverpause" 			=> $attributes["sliderHoverpause"],
-			"sliderAnimationDuration" 	=> $attributes["sliderAnimationDuration"],
-			"sliderRewind" 				=> $attributes["sliderRewind"],
-			"expectedNumberResults" 	=> $attributes["expectedNumberResults"],
-		],
-	];
-?>
-	<div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-posts-slider" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
-<?php
-	$output = ob_get_contents(); // collect output
-	ob_end_clean(); // Turn off ouput buffer
-	return $output; // Print output
-}
-
-// =============================================render_callback_block_posts_grid=====================================================================
-function render_callback_block_posts_grid($attributes)
-{
-	ob_start();
-	$ncGutenbergSectionsData = (object)[
-		"blockName" 		=> "nc-block-posts-grid",
-		"graphQLvariables" 	=> $attributes["graphQLvariables"],
-		"settings" 			=> (object)[
-			"blockLayoutStyle" 		=> $attributes["blockLayoutStyle"],
-			"postCardName" 			=> $attributes["postCardName"],
-			"gridClass" 			=> $attributes["gridClass"],
-			"gridClassCustom" 		=> $attributes["gridClassCustom"],
-			"showFilterTab" 		=> $attributes["showFilterTab"],
-			"viewMoreHref" 			=> $attributes["viewMoreHref"],
-			"heading" 				=> $attributes["heading"],
-			"subHeading" 			=> $attributes["subHeading"],
-			"hasBackground" 		=> $attributes["hasBackground"],
-			"categories" 			=> $attributes["categories"],
-			"enableLoadMoreButton" 	=> $attributes["enableLoadMoreButton"],
-			"loadMoreButtonHref" 	=> $attributes["loadMoreButtonHref"],
-			"filterDataBy" 			=> $attributes["filterDataBy"],
-			"expectedNumberResults" => $attributes["expectedNumberResults"],
-		],
-	];
-?>
-	<div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-posts-grid" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
-<?php
-	$output = ob_get_contents(); // collect output
-	ob_end_clean(); // Turn off ouput buffer
-	return $output; // Print output
-}
-
-// =============================================render_callback_block_magazine=====================================================================
-function render_callback_block_magazine($attributes)
-{
-	ob_start();
-	$ncGutenbergSectionsData = (object)[
-		"blockName" 		=> "nc-block-magazine",
-		"graphQLvariables" 	=> $attributes['graphQLvariables'],
-		"settings" 			=> (object)[
-			"sectionName" 			=> $attributes['sectionName'],
-			"showFilterTab" 		=> $attributes['showFilterTab'],
-			"viewMoreHref" 			=> $attributes['viewMoreHref'],
-			"heading" 				=> $attributes['heading'],
-			"subHeading" 			=> $attributes['subHeading'],
-			"hasBackground" 		=> $attributes['hasBackground'],
-			"categories" 			=> $attributes['categories'],
-			"expectedNumberResults" => $attributes['expectedNumberResults'],
-		]
-	];
-?>
-	<div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-magazine" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
-<?php
-	$output = ob_get_contents(); // collect output
-	ob_end_clean(); // Turn off ouput buffer
-	return $output; // Print output
 }
