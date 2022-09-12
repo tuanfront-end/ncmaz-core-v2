@@ -76,6 +76,7 @@ export default function BlockPostsSliderEdit(
 		heading,
 		subHeading,
 		hasBackground,
+		hasSSrInitData,
 	} = attributes;
 
 	//
@@ -285,6 +286,26 @@ export default function BlockPostsSliderEdit(
 							<PanelRow>{renderGeneralSetting()}</PanelRow>
 						</PanelBody>
 						<PanelBody initialOpen={false} title="Filter data settings">
+							<PanelRow>
+								<div>
+									<div className="w-full space-x-3 flex ">
+										<FormToggle
+											checked={hasSSrInitData}
+											onChange={() =>
+												setAttributes({ hasSSrInitData: !hasSSrInitData })
+											}
+											label={__("Has SSR Init Data", "ncmaz-core")}
+										/>
+										<legend>{__("Has SSR Init Data", "ncmaz-core")}</legend>
+									</div>
+									<span className="text-xs block mt-1.5">
+										{__(
+											"If disabled, the block's data will be loaded when the block is rendered on the client side",
+											"ncmaz-core"
+										)}
+									</span>
+								</div>
+							</PanelRow>
 							<PanelRow>
 								<RadioControl
 									label=""

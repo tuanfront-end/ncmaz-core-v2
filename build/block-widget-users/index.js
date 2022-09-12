@@ -2434,7 +2434,8 @@ function Edit(props) {
     orderBy,
     userIds,
     roleIn,
-    heading
+    heading,
+    hasSSrInitData
   } = attributes; //
 
   const {
@@ -2569,7 +2570,17 @@ function Edit(props) {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, renderGeneralSetting())), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
       initialOpen: false,
       title: "Filter data settings"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RadioControl, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "w-full space-x-3 flex "
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.FormToggle, {
+      checked: hasSSrInitData,
+      onChange: () => setAttributes({
+        hasSSrInitData: !hasSSrInitData
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Has SSR Init Data", "ncmaz-core")
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Has SSR Init Data", "ncmaz-core"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: "text-xs block mt-1.5"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("If disabled, the block's data will be loaded when the block is rendered on the client side", "ncmaz-core")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RadioControl, {
       label: "Users query by",
       selected: filterDataBy,
       options: _contains_common__WEBPACK_IMPORTED_MODULE_9__.OPTIONS_FILTER_DATA_BY,
@@ -2806,9 +2817,9 @@ const OPTIONS_FILTER_DATA_BY = [{
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "EDGES_POST_COMMONT_FIELDS": function() { return /* reexport safe */ _contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_POST_COMMONT_FIELDS; },
-/* harmony export */   "EDGES_TERMS_COMMONT_FIELDS": function() { return /* reexport safe */ _contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_TERMS_COMMONT_FIELDS; },
-/* harmony export */   "EDGES_USER_COMMONT_FIELDS": function() { return /* reexport safe */ _contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_USER_COMMONT_FIELDS; },
+/* harmony export */   "EDGES_POST_COMMONT_FIELDS": function() { return /* binding */ EDGES_POST_COMMONT_FIELDS; },
+/* harmony export */   "EDGES_TERMS_COMMONT_FIELDS": function() { return /* binding */ EDGES_TERMS_COMMONT_FIELDS; },
+/* harmony export */   "EDGES_USER_COMMONT_FIELDS": function() { return /* binding */ EDGES_USER_COMMONT_FIELDS; },
 /* harmony export */   "GQL_QUERY_GET_CATEGORIES_BY_FILTER": function() { return /* binding */ GQL_QUERY_GET_CATEGORIES_BY_FILTER; },
 /* harmony export */   "GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC": function() { return /* binding */ GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC; },
 /* harmony export */   "GQL_QUERY_GET_POSTS_BY_FILTER": function() { return /* binding */ GQL_QUERY_GET_POSTS_BY_FILTER; },
@@ -2821,508 +2832,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "GQL_QUERY_SEARCH_POSTS": function() { return /* binding */ GQL_QUERY_SEARCH_POSTS; },
 /* harmony export */   "GQL_QUERY_SEARCH_TAGS": function() { return /* binding */ GQL_QUERY_SEARCH_TAGS; },
 /* harmony export */   "GQL_QUERY_SEARCH_USER": function() { return /* binding */ GQL_QUERY_SEARCH_USER; },
-/* harmony export */   "avatarColors": function() { return /* reexport safe */ _contantsCommon__WEBPACK_IMPORTED_MODULE_0__.avatarColors; }
-/* harmony export */ });
-/* harmony import */ var _contantsCommon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./contantsCommon */ "./src/contains/contantsCommon.ts");
-/* harmony import */ var _contantsPLL__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./contantsPLL */ "./src/contains/contantsPLL.ts");
-var _window$ncmazcoreJsDa, _window$ncmazcoreJsDa2;
-
-
-
-let GQL_QUERY_GET_POSTS_BY_FILTER = `
-  query GQL_QUERY_GET_POSTS_BY_FILTER(
-    $field: PostObjectsConnectionOrderbyEnum = AUTHOR
-    $order: OrderEnum = ASC
-    $categoryIn: [ID] = []
-    $tagIn: [ID] = []
-    $authorIn: [ID] = []
-    $last: Int = null
-    $first: Int = 10
-    $before: String = ""
-    $after: String = ""
-  ) {
-    posts(
-      where: {
-        orderby: { field: $field, order: $order }
-        categoryIn: $categoryIn
-        tagIn: $tagIn
-        authorIn: $authorIn
-      }
-      last: $last
-      first: $first
-      before: $before
-      after: $after
-    ) {
-     ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_POST_COMMONT_FIELDS}
-      pageInfo {
-        hasNextPage
-        hasPreviousPage
-        endCursor
-        startCursor
-      }
-    }
-  }
-`;
-let GQL_QUERY_GET_POSTS_BY_SPECIFIC = `
-  query GQL_QUERY_GET_POSTS_BY_SPECIFIC($nameIn: [String] = "") {
-    posts(where: { nameIn: $nameIn,  orderby: {order: ASC, field: NAME_IN} }) { ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_POST_COMMONT_FIELDS} }
-  }
-`; // ===================== USERS =================================================
-
-let GQL_QUERY_GET_USERS_BY_FILTER = `query GQL_QUERY_GET_USERS_BY_FILTER(
-	$after: String = ""
-	$before: String = ""
-	$first: Int = 10
-	$last: Int = null
-	$field: UsersConnectionOrderbyEnum = DISPLAY_NAME
-	$order: OrderEnum = ASC
-	$roleIn: [UserRoleEnum] = []
-) {
-	users(
-		where: { orderby: { field: $field, order: $order }, roleIn: $roleIn }
-		last: $last
-		first: $first
-		before: $before
-		after: $after
-	) { ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_USER_COMMONT_FIELDS} }
-}`;
-let GQL_QUERY_GET_USERS_BY_SPECIFIC = `query GQL_QUERY_GET_USERS_BY_SPECIFIC($include: [Int] = null) {
-	users(where: { include: $include }) { ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_USER_COMMONT_FIELDS} }
-}`; // ===================== TERMS - TAGS | CATEGORIES =========================================
-
-let GQL_QUERY_GET_CATEGORIES_BY_FILTER = `
-	query GQL_QUERY_GET_CATEGORIES_BY_FILTER(
-		$order: OrderEnum = ASC
-		$orderby: TermObjectsConnectionOrderbyEnum = COUNT
-		$after: String = null
-		$before: String = null
-		$first: Int = 10
-		$last: Int = null
-	) {
-		categories(
-			where: { order: $order, orderby: $orderby, hideEmpty: true  }
-			first: $first
-			before: $before
-			after: $after
-			last: $last
-		) { ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_TERMS_COMMONT_FIELDS} }
-	}
-`;
-let GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC = `
-	query GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC($termTaxonomId: [ID] = "") {
-		categories(where: { termTaxonomId: $termTaxonomId }) { ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_TERMS_COMMONT_FIELDS} }
-	}
-`; // TAGS
-
-let GQL_QUERY_GET_TAGS_BY_FILTER = `
-	query GQL_QUERY_GET_TAGS_BY_FILTER(
-		$order: OrderEnum = ASC
-		$orderby: TermObjectsConnectionOrderbyEnum = COUNT
-		$after: String = null
-		$before: String = null
-		$first: Int = 10
-		$last: Int = null
-	) {
-		tags(
-			where: { order: $order, orderby: $orderby, hideEmpty: true }
-			first: $first
-			before: $before
-			after: $after
-			last: $last
-		) { ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_TERMS_COMMONT_FIELDS} }
-	}
-`;
-let GQL_QUERY_GET_TAGS_BY_SPECIFIC = `
-	query GQL_QUERY_GET_TAGS_BY_SPECIFIC($termTaxonomId: [ID] = "") {
-		tags(where: { termTaxonomId: $termTaxonomId }) { ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_TERMS_COMMONT_FIELDS} }
-	}
-`; // SEARCH
-
-let GQL_QUERY_SEARCH_POSTS = `
-  query GQL_QUERY_SEARCH_POSTS($search: String = "") {
-    posts(where: {search: $search})
-	{ ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_POST_COMMONT_FIELDS} }
-  }
-`;
-let GQL_QUERY_SEARCH_USER = `
-  query GQL_QUERY_SEARCH_USER($search: String = "") {
-	users(where: {search: $search})
-	{ ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_USER_COMMONT_FIELDS} }
-  }
-`;
-let GQL_QUERY_SEARCH_CATEGORIES = `
-  query GQL_QUERY_SEARCH_CATEGORIES($search: String = "") {
-	categories(where: {search: $search})
-	{ ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_TERMS_COMMONT_FIELDS} }
-  }
-`;
-let GQL_QUERY_SEARCH_TAGS = `
-  query GQL_QUERY_SEARCH_TAGS($search: String = "") {
-	tags(where: {search: $search})
-	{ ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_TERMS_COMMONT_FIELDS} }
-  }
-`; // CHECK ENABLE POLYLANG
-
-let IS_ENABLE_PLL = !!((_window$ncmazcoreJsDa = window.ncmazcoreJsData) !== null && _window$ncmazcoreJsDa !== void 0 && _window$ncmazcoreJsDa.pll_current_language) && !!((_window$ncmazcoreJsDa2 = window.ncmazcoreJsData) !== null && _window$ncmazcoreJsDa2 !== void 0 && _window$ncmazcoreJsDa2.pll_themeoption_actived); //
-
-if (IS_ENABLE_PLL) {
-  GQL_QUERY_GET_POSTS_BY_FILTER = _contantsPLL__WEBPACK_IMPORTED_MODULE_1__.PLLs.PLL_GET__GQL_QUERY_GET_POSTS_BY_FILTER;
-  GQL_QUERY_GET_POSTS_BY_SPECIFIC = _contantsPLL__WEBPACK_IMPORTED_MODULE_1__.PLLs.PLL_GET__GQL_QUERY_GET_POSTS_BY_SPECIFIC;
-  GQL_QUERY_GET_CATEGORIES_BY_FILTER = _contantsPLL__WEBPACK_IMPORTED_MODULE_1__.PLLs.PLL_GET__GQL_QUERY_GET_CATEGORIES_BY_FILTER;
-  GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC = _contantsPLL__WEBPACK_IMPORTED_MODULE_1__.PLLs.PLL_GET__GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC;
-  GQL_QUERY_GET_TAGS_BY_FILTER = _contantsPLL__WEBPACK_IMPORTED_MODULE_1__.PLLs.PLL_GET__GQL_QUERY_GET_TAGS_BY_FILTER;
-  GQL_QUERY_GET_TAGS_BY_SPECIFIC = _contantsPLL__WEBPACK_IMPORTED_MODULE_1__.PLLs.PLL_GET__GQL_QUERY_GET_TAGS_BY_SPECIFIC; //
-
-  GQL_QUERY_SEARCH_POSTS = _contantsPLL__WEBPACK_IMPORTED_MODULE_1__.PLLs.PLL_GET__GQL_QUERY_SEARCH_POSTS;
-  GQL_QUERY_SEARCH_CATEGORIES = _contantsPLL__WEBPACK_IMPORTED_MODULE_1__.PLLs.PLL_GET__GQL_QUERY_SEARCH_CATEGORIES;
-  GQL_QUERY_SEARCH_TAGS = _contantsPLL__WEBPACK_IMPORTED_MODULE_1__.PLLs.PLL_GET__GQL_QUERY_SEARCH_TAGS;
-}
-
-
-
-/***/ }),
-
-/***/ "./src/contains/contantsCommon.ts":
-/*!****************************************!*\
-  !*** ./src/contains/contantsCommon.ts ***!
-  \****************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "EDGES_POST_COMMONT_FIELDS": function() { return /* binding */ EDGES_POST_COMMONT_FIELDS; },
-/* harmony export */   "EDGES_TERMS_COMMONT_FIELDS": function() { return /* binding */ EDGES_TERMS_COMMONT_FIELDS; },
-/* harmony export */   "EDGES_USER_COMMONT_FIELDS": function() { return /* binding */ EDGES_USER_COMMONT_FIELDS; },
+/* harmony export */   "IS_ENABLE_PLL": function() { return /* binding */ IS_ENABLE_PLL; },
+/* harmony export */   "NCMAZCORE_PLL_CURRENT_LANGUAGE": function() { return /* binding */ NCMAZCORE_PLL_CURRENT_LANGUAGE; },
+/* harmony export */   "NCMAZCORE_PLL_THEMEOPTION_ACTIVED": function() { return /* binding */ NCMAZCORE_PLL_THEMEOPTION_ACTIVED; },
 /* harmony export */   "avatarColors": function() { return /* binding */ avatarColors; }
 /* harmony export */ });
-let avatarColors = ["#ffdd00", "#fbb034", "#ff4c4c", "#c1d82f", "#f48924", "#7ac143", "#30c39e", "#06BCAE", "#0695BC", "#037ef3", "#146eb4", "#8e43e7", "#ea1d5d", "#fc636b", "#ff6319", "#e01f3d", "#a0ac48", "#00d1b2", "#472f92", "#388ed1", "#a6192e", "#4a8594", "#7B9FAB", "#1393BD", "#5E13BD", "#E208A7"]; // ===================== POSTS =================================================
+let avatarColors = ["#ffdd00", "#fbb034", "#ff4c4c", "#c1d82f", "#f48924", "#7ac143", "#30c39e", "#06BCAE", "#0695BC", "#037ef3", "#146eb4", "#8e43e7", "#ea1d5d", "#fc636b", "#ff6319", "#e01f3d", "#a0ac48", "#00d1b2", "#472f92", "#388ed1", "#a6192e", "#4a8594", "#7B9FAB", "#1393BD", "#5E13BD", "#E208A7"];
+const {
+  EDGES_POST_COMMONT_FIELDS,
+  EDGES_TERMS_COMMONT_FIELDS,
+  EDGES_USER_COMMONT_FIELDS,
+  GQL_QUERY_GET_CATEGORIES_BY_FILTER,
+  GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC,
+  GQL_QUERY_GET_POSTS_BY_FILTER,
+  GQL_QUERY_GET_POSTS_BY_SPECIFIC,
+  GQL_QUERY_GET_TAGS_BY_FILTER,
+  GQL_QUERY_GET_TAGS_BY_SPECIFIC,
+  GQL_QUERY_GET_USERS_BY_FILTER,
+  GQL_QUERY_GET_USERS_BY_SPECIFIC,
+  GQL_QUERY_SEARCH_CATEGORIES,
+  GQL_QUERY_SEARCH_POSTS,
+  GQL_QUERY_SEARCH_TAGS,
+  GQL_QUERY_SEARCH_USER,
+  IS_ENABLE_PLL,
+  NCMAZCORE_PLL_CURRENT_LANGUAGE,
+  NCMAZCORE_PLL_THEMEOPTION_ACTIVED
+} = window.ncmazcoreJsData.gqlQueries;
 
-let EDGES_POST_COMMONT_FIELDS = ` edges {
-  node {
-    id
-    link
-    author {
-      node {
-        id
-        avatar {
-          url
-        }
-        url
-        uri
-        username
-        name
-        slug
-        ncUserMeta {
-          featuredImage {
-            sourceUrl
-          }
-        }
-      }
-    }
-    categories {
-      edges {
-        node {
-          id
-          link
-          name
-          uri
-          slug
-          count
-          categoryId
-          ncTaxonomyMeta {
-            color
-          }
-        }
-      }
-    }
-    commentCount
-    date
-    excerpt
-    featuredImage {
-      node {
-        id
-        altText
-        caption
-        sourceUrl
-      }
-    }
-    postFormats {
-      edges {
-        node {
-          id
-          name
-          slug
-        }
-      }
-    }
-    postId
-    slug
-    title
-    ncmazVideoUrl {
-      fieldGroupName
-      videoUrl
-    }
-    ncmazAudioUrl {
-      fieldGroupName
-      audioUrl
-    }
-    ncPostMetaData {
-      favoriteButtonShortcode
-      readingTimeShortcode
-      viewsCount
-      fieldGroupName
-    }
-    ncmazGalleryImgs {
-      fieldGroupName
-      image1 {
-        id
-        sourceUrl
-      }
-      image2 {
-        id
-        sourceUrl
-      }
-      image3 {
-        id
-        sourceUrl
-      }
-      image4 {
-        id
-        sourceUrl
-      }
-      image5 {
-        id
-        sourceUrl
-      }
-      image6 {
-        id
-        sourceUrl
-      }
-      image7 {
-        id
-        sourceUrl
-      }
-      image8 {
-        id
-        sourceUrl
-      }
-    }
-  }
-}`; // ===================== USERS =================================================
-
-let EDGES_USER_COMMONT_FIELDS = `edges {
-	node {
-		id
-		name
-		username
-		userId
-		url
-		uri
-    ncUserMeta {
-			color
-			ncBio
-			featuredImage {
-				sourceUrl
-				id
-			}
-			backgroundImage {
-				sourceUrl
-			}
-		}
-    posts {
-      pageInfo {
-        total
-      }
-    }
-	}
-}`; // ===================== TERMS - TAGS | CATEGORIES =========================================
-
-let EDGES_TERMS_COMMONT_FIELDS = `edges {
-    node {
-        id
-        slug
-        count
-        name
-        databaseId
-        description
-        link
-        ncTaxonomyMeta {
-            color                                     
-            featuredImage {
-                sourceUrl
-            }
-        }
-    }
-}`;
-
-
-/***/ }),
-
-/***/ "./src/contains/contantsPLL.ts":
-/*!*************************************!*\
-  !*** ./src/contains/contantsPLL.ts ***!
-  \*************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PLLs": function() { return /* binding */ PLLs; }
-/* harmony export */ });
-/* harmony import */ var _contantsCommon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./contantsCommon */ "./src/contains/contantsCommon.ts");
-var _window$ncmazcoreJsDa, _window$ncmazcoreJsDa2;
-
-
-let IS_ENABLE_PLL = !!((_window$ncmazcoreJsDa = window.ncmazcoreJsData) !== null && _window$ncmazcoreJsDa !== void 0 && _window$ncmazcoreJsDa.pll_current_language) && !!((_window$ncmazcoreJsDa2 = window.ncmazcoreJsData) !== null && _window$ncmazcoreJsDa2 !== void 0 && _window$ncmazcoreJsDa2.pll_themeoption_actived);
-const GQL_QUERY_GET_POSTS_BY_FILTER = !IS_ENABLE_PLL ? "" : `
-  query GQL_QUERY_GET_POSTS_BY_FILTER(
-    $language: LanguageCodeFilterEnum = ${window.ncmazcoreJsData.pll_current_language}
-    $field: PostObjectsConnectionOrderbyEnum = AUTHOR
-    $order: OrderEnum = ASC
-    $categoryIn: [ID] = []
-    $tagIn: [ID] = []
-    $authorIn: [ID] = []
-    $last: Int = null
-    $first: Int = 10
-    $before: String = ""
-    $after: String = ""
-  ) {
-    posts(
-      where: {
-        language: $language
-        orderby: { field: $field, order: $order }
-        categoryIn: $categoryIn
-        tagIn: $tagIn
-        authorIn: $authorIn
-      }
-      last: $last
-      first: $first
-      before: $before
-      after: $after
-    ) {
-     ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_POST_COMMONT_FIELDS}
-      pageInfo {
-        hasNextPage
-        hasPreviousPage
-        endCursor
-        startCursor
-      }
-    }
-  }
-`;
-const GQL_QUERY_GET_POSTS_BY_SPECIFIC = !IS_ENABLE_PLL ? "" : `
-  query GQL_QUERY_GET_POSTS_BY_SPECIFIC(
-    $language: LanguageCodeFilterEnum = ${window.ncmazcoreJsData.pll_current_language}
-    $nameIn: [String] = ""
-    ) {
-    posts(where: {
-      language: $language
-      nameIn: $nameIn
-      orderby: {order: ASC, field: NAME_IN}
-     }) { ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_POST_COMMONT_FIELDS} }
-  }
-`; // ===================== TERMS - TAGS | CATEGORIES =========================================
-
-const GQL_QUERY_GET_CATEGORIES_BY_FILTER = !IS_ENABLE_PLL ? "" : `
-	query GQL_QUERY_GET_CATEGORIES_BY_FILTER(
-    $language: LanguageCodeFilterEnum = ${window.ncmazcoreJsData.pll_current_language}
-		$order: OrderEnum = ASC
-		$orderby: TermObjectsConnectionOrderbyEnum = COUNT
-		$after: String = null
-		$before: String = null
-		$first: Int = 10
-		$last: Int = null
-	) {
-		categories(
-			where: { 
-        language: $language,
-        order: $order,
-        orderby: $orderby 
-      }
-			first: $first
-			before: $before
-			after: $after
-			last: $last
-		) { ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_TERMS_COMMONT_FIELDS} }
-	}
-`;
-const GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC = !IS_ENABLE_PLL ? "" : `
-	query GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC(
-    $language: LanguageCodeFilterEnum = ${window.ncmazcoreJsData.pll_current_language}
-    $termTaxonomId: [ID] = ""
-    ) {
-		categories(where: {
-      language: $language
-      termTaxonomId: $termTaxonomId
-     }) { ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_TERMS_COMMONT_FIELDS} }
-	}
-`; // TAGS
-
-const GQL_QUERY_GET_TAGS_BY_FILTER = !IS_ENABLE_PLL ? "" : `
-	query GQL_QUERY_GET_TAGS_BY_FILTER(
-    $language: LanguageCodeFilterEnum = ${window.ncmazcoreJsData.pll_current_language}
-		$order: OrderEnum = ASC
-		$orderby: TermObjectsConnectionOrderbyEnum = COUNT
-		$after: String = null
-		$before: String = null
-		$first: Int = 10
-		$last: Int = null
-	) {
-		tags(
-			where: {
-        language: $language 
-        order: $order
-        orderby: $orderby 
-      }
-			first: $first
-			before: $before
-			after: $after
-			last: $last
-		) { ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_TERMS_COMMONT_FIELDS} }
-	}
-`;
-const GQL_QUERY_GET_TAGS_BY_SPECIFIC = !IS_ENABLE_PLL ? "" : `
-	query GQL_QUERY_GET_TAGS_BY_SPECIFIC(
-    $language: LanguageCodeFilterEnum = ${window.ncmazcoreJsData.pll_current_language}
-    $termTaxonomId: [ID] = ""
-    ) {
-		tags(where: {
-      language: $language
-      termTaxonomId: $termTaxonomId
-    }) { ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_TERMS_COMMONT_FIELDS} }
-	}
-`; // SEARCH
-
-let GQL_QUERY_SEARCH_POSTS = !IS_ENABLE_PLL ? "" : `
-  query GQL_QUERY_SEARCH_POSTS($search: String = "", $language: LanguageCodeFilterEnum = ${window.ncmazcoreJsData.pll_current_language}) {
-    posts(where: {search: $search,  language: $language})
-	{ ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_POST_COMMONT_FIELDS} }
-  }
-`;
-let GQL_QUERY_SEARCH_CATEGORIES = !IS_ENABLE_PLL ? "" : `
-  query GQL_QUERY_SEARCH_CATEGORIES($search: String = "", $language: LanguageCodeFilterEnum = ${window.ncmazcoreJsData.pll_current_language}) {
-	categories(where: {language: $language, search: $search})
-	{ ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_TERMS_COMMONT_FIELDS} }
-  }
-`;
-let GQL_QUERY_SEARCH_TAGS = !IS_ENABLE_PLL ? "" : `
-  query GQL_QUERY_SEARCH_TAGS($search: String = "", $language: LanguageCodeFilterEnum = ${window.ncmazcoreJsData.pll_current_language}) {
-	tags(where: {language: $language, search: $search})
-	{ ${_contantsCommon__WEBPACK_IMPORTED_MODULE_0__.EDGES_TERMS_COMMONT_FIELDS} }
-  }
-`;
-const PLLs = {
-  PLL_GET__GQL_QUERY_GET_POSTS_BY_FILTER: GQL_QUERY_GET_POSTS_BY_FILTER,
-  PLL_GET__GQL_QUERY_GET_POSTS_BY_SPECIFIC: GQL_QUERY_GET_POSTS_BY_SPECIFIC,
-  //
-  PLL_GET__GQL_QUERY_GET_CATEGORIES_BY_FILTER: GQL_QUERY_GET_CATEGORIES_BY_FILTER,
-  PLL_GET__GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC: GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC,
-  PLL_GET__GQL_QUERY_GET_TAGS_BY_FILTER: GQL_QUERY_GET_TAGS_BY_FILTER,
-  PLL_GET__GQL_QUERY_GET_TAGS_BY_SPECIFIC: GQL_QUERY_GET_TAGS_BY_SPECIFIC,
-  //
-  PLL_GET__GQL_QUERY_SEARCH_CATEGORIES: GQL_QUERY_SEARCH_CATEGORIES,
-  PLL_GET__GQL_QUERY_SEARCH_TAGS: GQL_QUERY_SEARCH_TAGS,
-  PLL_GET__GQL_QUERY_SEARCH_POSTS: GQL_QUERY_SEARCH_POSTS
-};
 
 /***/ }),
 

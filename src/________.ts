@@ -1,45 +1,40 @@
-// import "./style.css";
-// import "./styles/index.scss";
-// import "@glidejs/glide/dist/css/glide.core.min.css";
+declare global {
+	var ncmazcoreJsData: {
+		ajaxurl: string;
+		restUrl: string;
+		graphQLBasePath: string;
+		img_empty_png: string;
+		img_musicWave_png: string;
+		homeURL: string;
+		pll_current_language: string | null;
+		pll_themeoption_actived: string | null;
+		gqlQueries: {
+			NCMAZCORE_PLL_CURRENT_LANGUAGE: string;
+			NCMAZCORE_PLL_THEMEOPTION_ACTIVED: string;
+			IS_ENABLE_PLL: string;
+			EDGES_POST_COMMONT_FIELDS: string;
+			EDGES_USER_COMMONT_FIELDS: string;
+			EDGES_TERMS_COMMONT_FIELDS: string;
+			GQL_QUERY_GET_POSTS_BY_FILTER: string;
+			GQL_QUERY_GET_POSTS_BY_SPECIFIC: string;
+			GQL_QUERY_GET_USERS_BY_FILTER: string;
+			GQL_QUERY_GET_USERS_BY_SPECIFIC: string;
+			GQL_QUERY_GET_CATEGORIES_BY_FILTER: string;
+			GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC: string;
+			GQL_QUERY_GET_TAGS_BY_FILTER: string;
+			GQL_QUERY_GET_TAGS_BY_SPECIFIC: string;
+			GQL_QUERY_SEARCH_POSTS: string;
+			GQL_QUERY_SEARCH_USER: string;
+			GQL_QUERY_SEARCH_CATEGORIES: string;
+			GQL_QUERY_SEARCH_TAGS: string;
+		};
+	};
+}
 
 //
 console.log(123456789, "-------- FIRST INDEX MAIN JS -------");
 //
-
-// const cache = new InMemoryCache({
-// 	addTypename: false,
-// 	typePolicies: {
-// 		// Post: {
-// 		// 	keyFields: [
-// 		// 		"ncmazVideoUrl",
-// 		// 		"ncmazAudioUrl",
-// 		// 		"ncPostMetaData",
-// 		// 		"ncmazGalleryImgs",
-// 		// 	],
-// 		// },
-// 		// User: {
-// 		// 	keyFields: ["ncUserMeta"],
-// 		// },
-// 		// Category: {
-// 		// 	keyFields: ["ncTaxonomyMeta"],
-// 		// },
-// 		// Tag: {
-// 		// 	keyFields: ["ncTaxonomyMeta"],
-// 		// },
-// 	},
-// });
-
-// const link = new RetryLink();
-
-// const httpLink = new HttpLink({
-// 	uri: ncmazcoreJsData.graphQLBasePath,
-// });
-
-// export const client = new ApolloClient({
-// 	uri: ncmazcoreJsData.graphQLBasePath,
-// 	cache,
-// 	link: from([link, httpLink]),
-// });
+export default null;
 
 //
 //

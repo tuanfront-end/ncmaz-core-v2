@@ -112,8 +112,6 @@ export default function BlockMagazineEdit(
 		hasSSrInitData,
 	} = attributes;
 
-	console.log(99999999999, "MAGAZINE");
-
 	const {
 		GQL_QUERY__string,
 		GQL_QUERY__string_text,

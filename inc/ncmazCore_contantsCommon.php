@@ -5,6 +5,10 @@ $NCMAZCORE_PLL_CURRENT_LANGUAGE   = function_exists('pll_current_language') ? st
 $NCMAZCORE_PLL_THEMEOPTION_ACTIVED = !empty($ncmaz_redux_demo) && boolval($ncmaz_redux_demo['nc-general-settings--general-switch-polylang']);
 $IS_ENABLE_PLL = boolval($NCMAZCORE_PLL_CURRENT_LANGUAGE) && $NCMAZCORE_PLL_THEMEOPTION_ACTIVED;
 
+$NCMAZ_CORE_INIT_POSTS = [];
+$NCMAZ_CORE_INIT_TERMS = [];
+$NCMAZ_CORE_INIT_USERS = [];
+
 // ===================== POSTS =================================================
 $EDGES_POST_COMMONT_FIELDS = 'edges {
     node {

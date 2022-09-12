@@ -12,6 +12,8 @@ function ncmaz_core_enqueue_admin_style($hook)
     // 
     wp_register_style('Line_Awesome', 'https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css');
     wp_enqueue_style('Line_Awesome');
+    // 
+
 }
 add_action('admin_enqueue_scripts', 'ncmaz_core_enqueue_admin_style');
 
@@ -22,13 +24,19 @@ add_action('init', function () {
         ncmazcorePluginEnqueueScript();
     }
 });
-
 function ncmazcorePluginEnqueueScript()
 {
     global $ncmaz_redux_demo;
-    if (empty($ncmaz_redux_demo)) {
+    if (!is_admin() || empty($ncmaz_redux_demo)) {
         return;
     }
+    global $NCMAZ_CORE_INIT_POSTS;
+    global $NCMAZCORE_PLL_CURRENT_LANGUAGE,  $NCMAZCORE_PLL_THEMEOPTION_ACTIVED, $IS_ENABLE_PLL, $EDGES_POST_COMMONT_FIELDS,
+        $EDGES_USER_COMMONT_FIELDS, $EDGES_TERMS_COMMONT_FIELDS, $GQL_QUERY_GET_POSTS_BY_FILTER, $GQL_QUERY_GET_POSTS_BY_SPECIFIC,
+        $GQL_QUERY_GET_USERS_BY_FILTER, $GQL_QUERY_GET_USERS_BY_SPECIFIC, $GQL_QUERY_GET_CATEGORIES_BY_FILTER,
+        $GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC, $GQL_QUERY_GET_TAGS_BY_FILTER, $GQL_QUERY_GET_TAGS_BY_SPECIFIC,
+        $GQL_QUERY_SEARCH_POSTS, $GQL_QUERY_SEARCH_USER, $GQL_QUERY_SEARCH_CATEGORIES, $GQL_QUERY_SEARCH_TAGS;
+
 
     wp_enqueue_script(
         'ncmazcore-customizer-script',

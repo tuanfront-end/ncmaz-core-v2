@@ -23,8 +23,9 @@ require plugin_dir_path(__FILE__) . 'inc/ncmazCore_contantsPLL.php';
 require plugin_dir_path(__FILE__) . 'inc/ncmazCore_contants.php';
 require plugin_dir_path(__FILE__) . 'inc/ncmazCore-custom-funcs.php';
 // 
-require plugin_dir_path(__FILE__) . 'inc/ncmazCore-enqueue-scripts.php';
 require plugin_dir_path(__FILE__) . 'inc/ncmazCore-blocks-render-callback.php';
+// end
+require plugin_dir_path(__FILE__) . 'inc/ncmazCore-enqueue-scripts.php';
 
 //============================================================================================================================================
 // START REGISTER GUTENBERG BLOCKS
@@ -39,7 +40,6 @@ function ncmazCore_create_blocks_gutenberg_init()
 			"type" 		=> "boolean",
 			"default" 	=> true
 		],
-
 		// 
 		"filterDataBy" => [
 			"type" => "string",
@@ -107,6 +107,11 @@ function ncmazCore_create_blocks_gutenberg_init()
 		],
 	];
 	$BLOCK_TERM_ATTRIBUTES_COMMON = [
+		"hasSSrInitData" => [
+			"type" 		=> "boolean",
+			"default" 	=> true
+		],
+		// 
 		"blockLayoutStyle" => [
 			"type" => "string", "default" => "layout-1"
 		],
@@ -155,6 +160,11 @@ function ncmazCore_create_blocks_gutenberg_init()
 		],
 	];
 	$BLOCK_USER_ATTRIBUTES_COMMON = [
+		"hasSSrInitData" => [
+			"type" 		=> "boolean",
+			"default" 	=> true
+		],
+		// 
 		"filterDataBy" => [
 			"type" => "string", "default" => "by_filter"
 		],
