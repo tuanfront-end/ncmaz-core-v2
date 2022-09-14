@@ -11,8 +11,8 @@ function render_callback_block_widget_users($attributes)
     $initUserIDs = [];
 
     if ($hasSSrInitData) {
-        $edegs = ncmazCore_useUserGqlQuery($attributes);
-        $initUserIDs = ncmazCore_getIDsFromUsersAndSetToJsVariable($edegs);
+        $edges = ncmazCore_useUserGqlQuery($attributes);
+        $initUserIDs = ncmazCore_getIDsFromUsersAndSetToJsVariable($edges);
     }
 
     $ncGutenbergSectionsData = (object)[
@@ -44,8 +44,8 @@ function render_callback_block_widget_terms($attributes)
     $initTermIDs = [];
 
     if ($hasSSrInitData) {
-        $edegs = ncmazCore_useTermGqlQuery($attributes);
-        $initTermIDs = ncmazCore_getIDsFromTermsAndSetToJsVariable($edegs);
+        $edges = ncmazCore_useTermGqlQuery($attributes);
+        $initTermIDs = ncmazCore_getIDsFromTermsAndSetToJsVariable($edges);
     }
 
     $ncGutenbergSectionsData = (object)[
@@ -77,8 +77,11 @@ function render_callback_block_widget_posts($attributes)
     $initPostIDs = [];
 
     if ($hasSSrInitData) {
-        $edegs = ncmazCore_usePostGqlQuery($attributes);
-        $initPostIDs = ncmazCore_getIDsFromPostsAndSetToJsVariable($edegs);
+        $aPostGqlQuery = ncmazCore_usePostGqlQuery($attributes);
+        $edges = !empty($aPostGqlQuery['edges']) ? $aPostGqlQuery['edges'] : [];
+        $pageInfo = !empty($aPostGqlQuery['pageInfo']) ? $aPostGqlQuery['pageInfo'] : [];
+
+        $initPostIDs = ncmazCore_getIDsFromPostsAndSetToJsVariable($edges);
     }
 
     $ncGutenbergSectionsData = (object)[
@@ -87,6 +90,7 @@ function render_callback_block_widget_posts($attributes)
         "hasSSrInitData"        =>     (object)[
             "hasSSrInitData"    => $hasSSrInitData,
             "initPostIDs"       => $initPostIDs,
+            "initPageInfo"       => $pageInfo,
         ],
         "settings"             => (object)[
             "postCardName"             => $attributes["postCardName"],
@@ -111,8 +115,8 @@ function render_callback_block_users_slider($attributes)
     $initUserIDs = [];
 
     if ($hasSSrInitData) {
-        $edegs = ncmazCore_useUserGqlQuery($attributes);
-        $initUserIDs = ncmazCore_getIDsFromUsersAndSetToJsVariable($edegs);
+        $edges = ncmazCore_useUserGqlQuery($attributes);
+        $initUserIDs = ncmazCore_getIDsFromUsersAndSetToJsVariable($edges);
     }
 
     $ncGutenbergSectionsData = (object)[
@@ -155,8 +159,8 @@ function render_callback_block_users_grid($attributes)
     $initUserIDs = [];
 
     if ($hasSSrInitData) {
-        $edegs = ncmazCore_useUserGqlQuery($attributes);
-        $initUserIDs = ncmazCore_getIDsFromUsersAndSetToJsVariable($edegs);
+        $edges = ncmazCore_useUserGqlQuery($attributes);
+        $initUserIDs = ncmazCore_getIDsFromUsersAndSetToJsVariable($edges);
     }
     $ncGutenbergSectionsData = (object)[
         "blockName"         => "nc-block-user-grid",
@@ -193,12 +197,12 @@ function render_callback_block_terms_slider($attributes)
     $initTermIDs = [];
 
     if ($hasSSrInitData) {
-        $edegs = ncmazCore_useTermGqlQuery($attributes);
-        $initTermIDs = ncmazCore_getIDsFromTermsAndSetToJsVariable($edegs);
+        $edges = ncmazCore_useTermGqlQuery($attributes);
+        $initTermIDs = ncmazCore_getIDsFromTermsAndSetToJsVariable($edges);
     }
 
     $ncGutenbergSectionsData = (object)[
-        "blockName"         => "nc-block-terms-grid",
+        "blockName"         => "nc-block-terms-slider",
         "graphQLvariables"     => $attributes["graphQLvariables"],
         "hasSSrInitData"        =>     (object)[
             "hasSSrInitData"    => $hasSSrInitData,
@@ -237,8 +241,8 @@ function render_callback_block_terms_grid($attributes)
     $initTermIDs = [];
 
     if ($hasSSrInitData) {
-        $edegs = ncmazCore_useTermGqlQuery($attributes);
-        $initTermIDs = ncmazCore_getIDsFromTermsAndSetToJsVariable($edegs);
+        $edges = ncmazCore_useTermGqlQuery($attributes);
+        $initTermIDs = ncmazCore_getIDsFromTermsAndSetToJsVariable($edges);
     }
 
     $ncGutenbergSectionsData = (object)[
@@ -275,8 +279,11 @@ function render_callback_block_posts_slider($attributes)
     $initPostIDs = [];
 
     if ($hasSSrInitData) {
-        $edegs = ncmazCore_usePostGqlQuery($attributes);
-        $initPostIDs = ncmazCore_getIDsFromPostsAndSetToJsVariable($edegs);
+        $aPostGqlQuery = ncmazCore_usePostGqlQuery($attributes);
+        $edges = !empty($aPostGqlQuery['edges']) ? $aPostGqlQuery['edges'] : [];
+        $pageInfo = !empty($aPostGqlQuery['pageInfo']) ? $aPostGqlQuery['pageInfo'] : [];
+
+        $initPostIDs = ncmazCore_getIDsFromPostsAndSetToJsVariable($edges);
     }
     $ncGutenbergSectionsData = (object)[
         "blockName"         => "nc-block-posts-slider",
@@ -284,6 +291,7 @@ function render_callback_block_posts_slider($attributes)
         "hasSSrInitData"        =>     (object)[
             "hasSSrInitData"    => $hasSSrInitData,
             "initPostIDs"       => $initPostIDs,
+            "initPageInfo"       => $pageInfo,
         ],
         "settings"             => (object)[
             "blockLayoutStyle"             => $attributes["blockLayoutStyle"],
@@ -320,8 +328,11 @@ function render_callback_block_posts_grid($attributes)
     $initPostIDs = [];
 
     if ($hasSSrInitData) {
-        $edegs = ncmazCore_usePostGqlQuery($attributes);
-        $initPostIDs = ncmazCore_getIDsFromPostsAndSetToJsVariable($edegs);
+        $aPostGqlQuery = ncmazCore_usePostGqlQuery($attributes);
+        $edges = !empty($aPostGqlQuery['edges']) ? $aPostGqlQuery['edges'] : [];
+        $pageInfo = !empty($aPostGqlQuery['pageInfo']) ? $aPostGqlQuery['pageInfo'] : [];
+
+        $initPostIDs = ncmazCore_getIDsFromPostsAndSetToJsVariable($edges);
     }
 
     $ncGutenbergSectionsData = (object)[
@@ -330,6 +341,7 @@ function render_callback_block_posts_grid($attributes)
         "hasSSrInitData"        =>     (object)[
             "hasSSrInitData"    => $hasSSrInitData,
             "initPostIDs"       => $initPostIDs,
+            "initPageInfo"       => $pageInfo,
         ],
         "settings"             => (object)[
             "blockLayoutStyle"         => $attributes["blockLayoutStyle"],
@@ -364,8 +376,11 @@ function render_callback_block_magazine($attributes)
     $initPostIDs = [];
 
     if ($hasSSrInitData) {
-        $edegs = ncmazCore_usePostGqlQuery($attributes);
-        $initPostIDs = ncmazCore_getIDsFromPostsAndSetToJsVariable($edegs);
+        $aPostGqlQuery = ncmazCore_usePostGqlQuery($attributes);
+        $edges = !empty($aPostGqlQuery['edges']) ? $aPostGqlQuery['edges'] : [];
+        $pageInfo = !empty($aPostGqlQuery['pageInfo']) ? $aPostGqlQuery['pageInfo'] : [];
+
+        $initPostIDs = ncmazCore_getIDsFromPostsAndSetToJsVariable($edges);
     }
     $ncGutenbergSectionsData = (object)[
         "blockName"             => "nc-block-magazine",
@@ -373,6 +388,7 @@ function render_callback_block_magazine($attributes)
         "hasSSrInitData"        =>     (object)[
             "hasSSrInitData"    => $hasSSrInitData,
             "initPostIDs"       => $initPostIDs,
+            "initPageInfo"      => $pageInfo,
         ],
         "settings"              => (object)[
             "sectionName"             => $attributes['sectionName'],

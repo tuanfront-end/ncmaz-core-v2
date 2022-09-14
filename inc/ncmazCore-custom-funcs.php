@@ -27,7 +27,7 @@ function ncmazCore_usePostGqlQuery(array $attributes = [])
 	if ($filterDataBy === "by_specific") {
 		$variables = [
 			"nameIn" => array_map(function ($p) {
-				return $p->value;
+				return $p["value"];
 			}, $posts)
 		];
 		$GQL_QUERY__string = $GQL_QUERY_GET_POSTS_BY_SPECIFIC;
@@ -36,13 +36,13 @@ function ncmazCore_usePostGqlQuery(array $attributes = [])
 		$variables = [
 			// term IDs
 			"categoryIn" => array_map(function ($p) {
-				return $p->value;
+				return $p["value"];
 			}, $categories),
 			"tagIn" => array_map(function ($p) {
-				return $p->value;
+				return $p["value"];
 			}, $tags),
 			"authorIn" => array_map(function ($p) {
-				return $p->value;
+				return $p["value"];
 			}, $authors),
 			"order" => $order,
 			"field" => $orderBy,
@@ -52,17 +52,22 @@ function ncmazCore_usePostGqlQuery(array $attributes = [])
 
 	// =================== QUERY GRAPHQL ===================
 	$data =  do_graphql_request($GQL_QUERY__string, 'GQL_QUERY_GET_POSTS_BY_CALLBACK', $variables);
+
 	$edges = !empty($data['data']['posts']['edges']) ? $data['data']['posts']['edges'] : [];
+	$pageInfo = !empty($data['data']['posts']['pageInfo']) ? $data['data']['posts']['pageInfo'] : [];
 
 	if (!empty($edges) && is_array($edges)) {
-		return $edges;
+		return [
+			'edges' 	=>	$edges,
+			'pageInfo' 	=>	$pageInfo,
+		];
 	}
 	return [];
 }
 
 function ncmazCore_getIDsFromPostsAndSetToJsVariable($edges = [])
 {
-	global $NCMAZ_CORE_INIT_POSTS, $NCMAZ_CORE_INIT_TERMS, $NCMAZ_CORE_INIT_USERS;
+	global $NCMAZ_CORE_INIT_POSTS;
 	// 
 	$postIDs = [];
 
@@ -70,16 +75,6 @@ function ncmazCore_getIDsFromPostsAndSetToJsVariable($edges = [])
 		$postIDs[] = $edg['node']['postId'];
 		$NCMAZ_CORE_INIT_POSTS[$edg['node']['postId']] = $edg['node'];
 	}
-
-	// 
-	wp_enqueue_script('ncmazCore-mainJs', _NCMAZ_FRONTEND_DIR_URL . 'public/js/customizer.js', array(), _NCMAZ_CORE_VERSION, true);
-	wp_add_inline_script('ncmazCore-mainJs', 'window.ncmazCoreVariables = ' . json_encode(
-		[
-			'ncmazCoreInitPosts'	=> (object)$NCMAZ_CORE_INIT_POSTS,
-			'ncmazCoreInitTerms'	=> (object)$NCMAZ_CORE_INIT_TERMS,
-			'ncmazCoreInitUsers'	=> (object)$NCMAZ_CORE_INIT_USERS,
-		]
-	), 'before');
 
 	return $postIDs;
 }
@@ -101,7 +96,6 @@ function ncmazCore_useTermGqlQuery(array $attributes = [])
 	$categories = $attributes['categories'];
 	$tags = $attributes['tags'];
 
-
 	//
 	$GQL_QUERY__string = "";
 	$variables = (object)[];
@@ -120,7 +114,7 @@ function ncmazCore_useTermGqlQuery(array $attributes = [])
 			$variables = [
 				// "termTaxonomId" => (categories || []).map((item) => item.value),
 				"termTaxonomId" => array_map(function ($p) {
-					return $p->value;
+					return $p["value"];
 				}, $categories)
 			];
 			$GQL_QUERY__string = $GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC;
@@ -140,7 +134,7 @@ function ncmazCore_useTermGqlQuery(array $attributes = [])
 			$variables = [
 				// termTaxonomId: (tags || []).map((item) => item.value) 
 				"termTaxonomId" => array_map(function ($p) {
-					return $p->value;
+					return $p["value"];
 				}, $tags)
 			];
 			$GQL_QUERY__string = $GQL_QUERY_GET_TAGS_BY_SPECIFIC;
@@ -163,7 +157,7 @@ function ncmazCore_useTermGqlQuery(array $attributes = [])
 
 function ncmazCore_getIDsFromTermsAndSetToJsVariable($edges = [])
 {
-	global $NCMAZ_CORE_INIT_TERMS, $NCMAZ_CORE_INIT_POSTS, $NCMAZ_CORE_INIT_USERS;
+	global $NCMAZ_CORE_INIT_TERMS;
 	// 
 	$termIDs = [];
 
@@ -171,16 +165,6 @@ function ncmazCore_getIDsFromTermsAndSetToJsVariable($edges = [])
 		$termIDs[] = $edg['node']['databaseId'];
 		$NCMAZ_CORE_INIT_TERMS[$edg['node']['databaseId']] = $edg['node'];
 	}
-
-	// 
-	wp_enqueue_script('ncmazCore-mainJs', _NCMAZ_FRONTEND_DIR_URL . 'public/js/customizer.js', array(), _NCMAZ_CORE_VERSION, true);
-	wp_add_inline_script('ncmazCore-mainJs', 'window.ncmazCoreVariables = ' . json_encode(
-		[
-			'ncmazCoreInitUsers'	=> (object)$NCMAZ_CORE_INIT_USERS,
-			'ncmazCoreInitPosts'	=> (object)$NCMAZ_CORE_INIT_POSTS,
-			'ncmazCoreInitTerms'	=> (object)$NCMAZ_CORE_INIT_TERMS,
-		]
-	), 'before');
 
 	return $termIDs;
 }
@@ -212,7 +196,7 @@ function ncmazCore_useUserGqlQuery(array $attributes = [])
 		$variables = [
 			// include: userIds.map((item) => item.value)
 			"include" => array_map(function ($p) {
-				return $p->value;
+				return $p["value"];
 			}, $userIds)
 		];
 		$GQL_QUERY__string = $GQL_QUERY_GET_USERS_BY_SPECIFIC;
@@ -224,7 +208,7 @@ function ncmazCore_useUserGqlQuery(array $attributes = [])
 			"order" => $order,
 			// "roleIn" => roleIn.map((item) => item.value),
 			"roleIn" =>  array_map(function ($p) {
-				return $p->value;
+				return $p["value"];
 			}, $roleIn)
 		];
 	}
@@ -241,23 +225,13 @@ function ncmazCore_useUserGqlQuery(array $attributes = [])
 
 function ncmazCore_getIDsFromUsersAndSetToJsVariable($edges = [])
 {
-	global $NCMAZ_CORE_INIT_TERMS, $NCMAZ_CORE_INIT_POSTS, $NCMAZ_CORE_INIT_USERS;
+	global  $NCMAZ_CORE_INIT_USERS;
 	// 
 	$userIDs = [];
 	foreach ($edges as $edg) {
 		$userIDs[] = $edg['node']['userId'];
 		$NCMAZ_CORE_INIT_USERS[$edg['node']['userId']] = $edg['node'];
 	}
-
-	// 
-	wp_enqueue_script('ncmazCore-mainJs', _NCMAZ_FRONTEND_DIR_URL . 'public/js/customizer.js', array(), _NCMAZ_CORE_VERSION, true);
-	wp_add_inline_script('ncmazCore-mainJs', 'window.ncmazCoreVariables = ' . json_encode(
-		[
-			'ncmazCoreInitUsers'	=> (object)$NCMAZ_CORE_INIT_USERS,
-			'ncmazCoreInitPosts'	=> (object)$NCMAZ_CORE_INIT_POSTS,
-			'ncmazCoreInitTerms'	=> (object)$NCMAZ_CORE_INIT_TERMS,
-		]
-	), 'before');
 
 	return $userIDs;
 }

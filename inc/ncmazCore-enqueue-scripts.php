@@ -18,6 +18,26 @@ function ncmaz_core_enqueue_admin_style($hook)
 add_action('admin_enqueue_scripts', 'ncmaz_core_enqueue_admin_style');
 
 // 
+//  ======================= enqueueInitDataToFooterJs ===========================
+function ncmazCore_enqueueInitDataToFooterJs()
+{
+    global $NCMAZ_CORE_INIT_POSTS, $NCMAZ_CORE_INIT_USERS, $NCMAZ_CORE_INIT_TERMS;
+?>
+    <script type="text/javascript">
+        window.ncmazCoreVariables =
+            <?php echo json_encode(
+                [
+                    'ncmazCoreInitUsers'    => (object)$NCMAZ_CORE_INIT_USERS,
+                    'ncmazCoreInitPosts'    => (object)$NCMAZ_CORE_INIT_POSTS,
+                    'ncmazCoreInitTerms'    => (object)$NCMAZ_CORE_INIT_TERMS,
+                ]
+            ); ?>
+    </script>
+<?php
+}
+add_action('wp_footer', 'ncmazCore_enqueueInitDataToFooterJs');
+
+// 
 //  ======================= wp_enqueue_script ===========================
 add_action('init', function () {
     if (is_admin()) {
@@ -30,7 +50,6 @@ function ncmazcorePluginEnqueueScript()
     if (!is_admin() || empty($ncmaz_redux_demo)) {
         return;
     }
-    global $NCMAZ_CORE_INIT_POSTS;
     global $NCMAZCORE_PLL_CURRENT_LANGUAGE,  $NCMAZCORE_PLL_THEMEOPTION_ACTIVED, $IS_ENABLE_PLL, $EDGES_POST_COMMONT_FIELDS,
         $EDGES_USER_COMMONT_FIELDS, $EDGES_TERMS_COMMONT_FIELDS, $GQL_QUERY_GET_POSTS_BY_FILTER, $GQL_QUERY_GET_POSTS_BY_SPECIFIC,
         $GQL_QUERY_GET_USERS_BY_FILTER, $GQL_QUERY_GET_USERS_BY_SPECIFIC, $GQL_QUERY_GET_CATEGORIES_BY_FILTER,
