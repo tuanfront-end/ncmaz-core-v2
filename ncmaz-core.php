@@ -5,7 +5,7 @@
  * Description:       Example block written with ESNext standard and JSX support - NEW VERSION.
  * Requires at least: 5.8
  * Requires PHP:      7.3
- * Version:           2.2.0
+ * Version:           3.0.0
  * Author:            The WordPress Contributors
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@
  */
 
 if (!defined('_NCMAZ_CORE_VERSION')) {
-	define('_NCMAZ_CORE_VERSION', '2.2.0');
+	define('_NCMAZ_CORE_VERSION', '3.0.0');
 }
 
 require plugin_dir_path(__FILE__) . 'inc/ncmazCore_contantsCommon.php';
