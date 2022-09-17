@@ -28,7 +28,7 @@ function render_callback_block_widget_users($attributes)
         ]
     ];
 ?>
-    <div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-widget-users" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
+    <div class="<?php echo esc_attr(!empty($attributes['className']) ? $attributes['className'] : ''); ?>" data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-widget-users" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
 <?php
     $output = ob_get_contents(); // collect output
     ob_end_clean(); // Turn off ouput buffer
@@ -62,7 +62,7 @@ function render_callback_block_widget_terms($attributes)
         ]
     ];
 ?>
-    <div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-widget-terms" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
+    <div class="<?php echo esc_attr(!empty($attributes['className']) ? $attributes['className'] : ''); ?>" data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-widget-terms" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
 <?php
     $output = ob_get_contents(); // collect output
     ob_end_clean(); // Turn off ouput buffer
@@ -75,6 +75,7 @@ function render_callback_block_widget_posts($attributes)
     ob_start();
     $hasSSrInitData = boolval($attributes['hasSSrInitData']);
     $initPostIDs = [];
+    $pageInfo = [];
 
     if ($hasSSrInitData) {
         $aPostGqlQuery = ncmazCore_usePostGqlQuery($attributes);
@@ -99,7 +100,7 @@ function render_callback_block_widget_posts($attributes)
         ]
     ];
 ?>
-    <div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-widget-posts" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
+    <div class="<?php echo esc_attr(!empty($attributes['className']) ? $attributes['className'] : ''); ?>" data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-widget-posts" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
 <?php
     $output = ob_get_contents(); // collect output
     ob_end_clean(); // Turn off ouput buffer
@@ -143,7 +144,7 @@ function render_callback_block_users_slider($attributes)
         ],
     ];
 ?>
-    <div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-users-slider" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
+    <div class="<?php echo esc_attr(!empty($attributes['className']) ? $attributes['className'] : ''); ?>" data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-users-slider" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
 <?php
     $output = ob_get_contents(); // collect output
     ob_end_clean(); // Turn off ouput buffer
@@ -181,7 +182,7 @@ function render_callback_block_users_grid($attributes)
         ],
     ];
 ?>
-    <div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-users-grid" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
+    <div class="<?php echo esc_attr(!empty($attributes['className']) ? $attributes['className'] : ''); ?>" data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-users-grid" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
 <?php
     $output = ob_get_contents(); // collect output
     ob_end_clean(); // Turn off ouput buffer
@@ -225,7 +226,7 @@ function render_callback_block_terms_slider($attributes)
         ],
     ];
 ?>
-    <div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-terms-slider" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
+    <div class="<?php echo esc_attr(!empty($attributes['className']) ? $attributes['className'] : ''); ?>" data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-terms-slider" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
 <?php
     $output = ob_get_contents(); // collect output
     ob_end_clean(); // Turn off ouput buffer
@@ -264,7 +265,7 @@ function render_callback_block_terms_grid($attributes)
         ],
     ];
 ?>
-    <div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-terms-grid" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
+    <div class="<?php echo esc_attr(!empty($attributes['className']) ? $attributes['className'] : ''); ?>" data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-terms-grid" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
 <?php
     $output = ob_get_contents(); // collect output
     ob_end_clean(); // Turn off ouput buffer
@@ -277,6 +278,7 @@ function render_callback_block_posts_slider($attributes)
     ob_start();
     $hasSSrInitData = boolval($attributes['hasSSrInitData']);
     $initPostIDs = [];
+    $pageInfo = [];
 
     if ($hasSSrInitData) {
         $aPostGqlQuery = ncmazCore_usePostGqlQuery($attributes);
@@ -313,7 +315,7 @@ function render_callback_block_posts_slider($attributes)
         ],
     ];
 ?>
-    <div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-posts-slider" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
+    <div class="<?php echo esc_attr(!empty($attributes['className']) ? $attributes['className'] : ''); ?>" data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-posts-slider" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
 <?php
     $output = ob_get_contents(); // collect output
     ob_end_clean(); // Turn off ouput buffer
@@ -326,6 +328,7 @@ function render_callback_block_posts_grid($attributes)
     ob_start();
     $hasSSrInitData = boolval($attributes['hasSSrInitData']);
     $initPostIDs = [];
+    $pageInfo = [];
 
     if ($hasSSrInitData) {
         $aPostGqlQuery = ncmazCore_usePostGqlQuery($attributes);
@@ -361,7 +364,7 @@ function render_callback_block_posts_grid($attributes)
         ],
     ];
 ?>
-    <div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-posts-grid" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
+    <div class="<?php echo esc_attr(!empty($attributes['className']) ? $attributes['className'] : ''); ?>" data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-posts-grid" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
 <?php
     $output = ob_get_contents(); // collect output
     ob_end_clean(); // Turn off ouput buffer
@@ -374,12 +377,11 @@ function render_callback_block_magazine($attributes)
     ob_start();
     $hasSSrInitData = boolval($attributes['hasSSrInitData']);
     $initPostIDs = [];
-
+    $pageInfo = [];
     if ($hasSSrInitData) {
         $aPostGqlQuery = ncmazCore_usePostGqlQuery($attributes);
         $edges = !empty($aPostGqlQuery['edges']) ? $aPostGqlQuery['edges'] : [];
         $pageInfo = !empty($aPostGqlQuery['pageInfo']) ? $aPostGqlQuery['pageInfo'] : [];
-
         $initPostIDs = ncmazCore_getIDsFromPostsAndSetToJsVariable($edges);
     }
     $ncGutenbergSectionsData = (object)[
@@ -402,7 +404,7 @@ function render_callback_block_magazine($attributes)
         ]
     ];
 ?>
-    <div data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-magazine" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
+    <div class="<?php echo esc_attr(!empty($attributes['className']) ? $attributes['className'] : ''); ?>" data-nc-gutenberg-section="true" data-nc-gutenberg-section-type="block-magazine" data-nc-gutenberg-section-api="<?php echo esc_attr(wp_json_encode($ncGutenbergSectionsData)); ?>"></div>
 <?php
     $output = ob_get_contents(); // collect output
     ob_end_clean(); // Turn off ouput buffer

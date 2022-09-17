@@ -2,11 +2,11 @@
 
 /**
  * Plugin Name:       Ncmaz Core
- * Description:       Example block written with ESNext standard and JSX support - NEW VERSION.
+ * Description:       Example block written with ESNext standard and JSX support.
  * Requires at least: 5.8
  * Requires PHP:      7.3
  * Version:           3.0.0
- * Author:            The WordPress Contributors
+ * Author:            ChisNghiax
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       ncmaz-core
