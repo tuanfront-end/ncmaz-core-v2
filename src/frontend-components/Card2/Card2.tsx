@@ -6,7 +6,7 @@ import CardAuthor2 from "../CardAuthor2/CardAuthor2";
 import PostCardLikeAndComment from "../PostCardLikeAndComment/PostCardLikeAndComment";
 import PostCardDropdownShare from "../PostCardDropdownShare/PostCardDropdownShare";
 
-const Card2 = ({ className = "h-full", size = "normal", post, isSkeleton }) => {
+const Card2 = ({ className = "h-full", size = "normal", post }) => {
 	const {
 		featuredImage,
 		title,
@@ -28,6 +28,7 @@ const Card2 = ({ className = "h-full", size = "normal", post, isSkeleton }) => {
 				<NcImage
 					containerClassName="absolute inset-0"
 					src={featuredImage?.node.sourceUrl}
+					srcSet={featuredImage?.node.srcSet}
 				/>
 
 				<PostTypeFeaturedIcon

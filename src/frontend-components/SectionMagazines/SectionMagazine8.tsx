@@ -2,19 +2,17 @@ import React, { FC } from "react";
 import Card16Podcast from "../Card16Podcast/Card16Podcast";
 import Card17Podcast from "../Card17Podcast/Card17Podcast";
 
-const SectionMagazine8 = ({ activePosts, isLoading }) => {
+const SectionMagazine8 = ({ activePosts }) => {
 	return (
 		<div className={`grid grid-cols-1 sm:grid-cols-6 gap-6 md:gap-8`}>
 			{activePosts[0] && (
 				<Card16Podcast
-					isSkeleton={isLoading}
 					className="sm:col-span-3 lg:col-span-2"
 					post={activePosts[0].node}
 				/>
 			)}
 			{activePosts[1] && (
 				<Card16Podcast
-					isSkeleton={isLoading}
 					className="sm:col-span-3 lg:col-span-2"
 					post={activePosts[1].node}
 				/>
@@ -23,11 +21,7 @@ const SectionMagazine8 = ({ activePosts, isLoading }) => {
 				{activePosts
 					.filter((_, i) => i > 1 && i < 6)
 					.map((p) => (
-						<Card17Podcast
-							isSkeleton={isLoading}
-							key={p.node.id}
-							post={p.node}
-						/>
+						<Card17Podcast key={p.node.id} post={p.node} />
 					))}
 			</div>
 		</div>

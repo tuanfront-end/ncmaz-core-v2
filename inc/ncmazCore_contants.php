@@ -1,6 +1,4 @@
 <?php
-
-
 $GQL_QUERY_GET_POSTS_BY_FILTER =  '
   query GQL_QUERY_GET_POSTS_BY_FILTER(
     $field: PostObjectsConnectionOrderbyEnum = AUTHOR

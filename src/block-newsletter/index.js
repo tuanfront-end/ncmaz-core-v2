@@ -29,20 +29,20 @@ registerBlockType(metadata.name, {
 		</Suspense>
 	)),
 	save,
-	attributes: {
-		hasBackground: { type: "boolean", default: false },
-		heading: {
-			type: "string",
-			default: "Join our newsletter 🎉",
-		},
-		subHeading: {
-			type: "string",
-			default:
-				"Read and share new perspectives on just about any topic. Everyone’s welcome.",
-		},
-		mediaId: { type: "number", default: 0 },
-		mediaUrl: { type: "string", default: "" },
-		mediaSrcSet: { type: "string", default: "" },
-		descLists: { type: "array", default: [] },
-	},
+	// attributes: {
+	// 	hasBackground: { type: "boolean", default: false },
+	// 	heading: {
+	// 		type: "string",
+	// 		default: "Join our newsletter 🎉",
+	// 	},
+	// 	subHeading: {
+	// 		type: "string",
+	// 		default:
+	// 			"Read and share new perspectives on just about any topic. Everyone’s welcome.",
+	// 	},
+	// 	mediaId: { type: "number", default: 0 },
+	// 	mediaUrl: { type: "string", default: "" },
+	// 	mediaSrcSet: { type: "string", default: "" },
+	// 	descLists: { type: "array", default: [] },
+	// },
 });

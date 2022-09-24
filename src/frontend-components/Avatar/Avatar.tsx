@@ -1,12 +1,17 @@
 import React, { FC } from "react";
 import { avatarColors } from "../../contains/contants";
+import getImageSizesBySizeName from "../../utils/getImageSizesBySizeName";
 const Avatar = ({
 	containerClassName = "ring-1 ring-white dark:ring-neutral-900",
 	sizeClass = "h-6 w-6 text-sm",
 	radius = "rounded-md",
 	imgUrl,
 	userName,
+	imageSizes = "THUMBNAIL",
+	srcSet = undefined,
 }) => {
+	let SIZES = getImageSizesBySizeName({ sizeName: imageSizes as any });
+
 	const url = imgUrl || "";
 	const name = userName || "John Doe";
 	const _setBgColor = (name) => {
@@ -25,7 +30,9 @@ const Avatar = ({
 				<img
 					className="absolute inset-0 w-full h-full object-cover"
 					src={url}
+					srcSet={srcSet}
 					alt={name}
+					sizes={SIZES}
 				/>
 			)}
 			<span className="wil-avatar__name">{name[0]}</span>

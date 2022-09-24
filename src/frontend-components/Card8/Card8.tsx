@@ -1,14 +1,13 @@
 import React, { FC } from "react";
 import CategoryBadgeList from "../CategoryBadgeList/CategoryBadgeList";
 import NcImage from "../NcImage/NcImage";
-import PostCardDropdownShare from "../PostCardDropdownShare/PostCardDropdownShare";
-import PostCardLikeAndComment from "../PostCardLikeAndComment/PostCardLikeAndComment";
 import PostTypeFeaturedIcon from "../PostTypeFeaturedIcon/PostTypeFeaturedIcon";
-import PostCardMeta from "../PostCardMeta/PostCardMeta";
-import PostCardLikeAction from "../PostCardLikeAction/PostCardLikeAction";
-import CardAuthor2 from "../CardAuthor2/CardAuthor2";
 
-const Card8 = ({ className = "h-full", post, isSkeleton }) => {
+const Card8 = ({
+	className = "h-full",
+	post,
+	ratio = "pt-[100%] sm:pt-[55%] ",
+}) => {
 	const { title, link, featuredImage, excerpt, categories, postFormats } = post;
 
 	return (
@@ -18,11 +17,12 @@ const Card8 = ({ className = "h-full", post, isSkeleton }) => {
 		>
 			<a
 				href={link}
-				className="block w-full h-0 pt-[100%] sm:pt-[55%] rounded-xl overflow-hidden"
+				className={`block w-full h-0 ${ratio} rounded-xl overflow-hidden`}
 			>
 				<NcImage
 					containerClassName="absolute inset-0"
 					src={featuredImage?.node.sourceUrl}
+					srcSet={featuredImage?.node.srcSet}
 				/>
 				<PostTypeFeaturedIcon
 					className="absolute top-4 left-4"

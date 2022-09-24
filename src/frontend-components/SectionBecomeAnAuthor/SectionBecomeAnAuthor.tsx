@@ -3,14 +3,13 @@ import ButtonPrimary from "../Button/ButtonPrimary";
 
 const SectionBecomeAnAuthor = ({
 	className = "",
-	description = `Become an author you can earn extra income by writing articles. Read
-	and share new perspectives on just about any topic. Everyone’s welcome.`,
+	description = `Become an author you can earn extra income by writing articles. Read and share new perspectives on just about any topic. Everyone’s welcome.`,
 	heading = "Become an author and share your great stories",
 	smallText = "supper change your planning powers",
 	buttonText = "Become an author",
 	buttonHref = "/#",
-	rightImg = "https://chisnghiax.com/ncmaz/static/media/BecomeAnAuthorImg.02703848.png",
-	rightImgMediaSrcSet = "",
+	rightImg = "",
+	rightImgMediaSrcSet,
 }) => {
 	return (
 		<div
@@ -21,7 +20,7 @@ const SectionBecomeAnAuthor = ({
 				<span className="text-xs uppercase tracking-wider font-medium text-neutral-400">
 					{smallText}
 				</span>
-				<h2 className="font-semibold text-3xl sm:text-4xl !mt-3">{heading}</h2>
+				<h2 className="font-semibold text-3xl sm:text-4xl mt-3">{heading}</h2>
 				<span className="block mt-8 text-neutral-500 dark:text-neutral-400">
 					{description}
 				</span>
@@ -36,13 +35,14 @@ const SectionBecomeAnAuthor = ({
 						src={rightImg}
 						alt="become an author image"
 						srcSet={rightImgMediaSrcSet}
-						sizes="(max-width: 1297px) 100vw, 1297px"
+						sizes="(max-width: 768px) 100vw, 768px"
 					/>
 				) : (
 					<img
 						className="max-w-full"
 						src={rightImg}
 						alt="become an author image"
+						sizes="(max-width: 768px) 100vw, 768px"
 					/>
 				)}
 			</div>

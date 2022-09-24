@@ -180,15 +180,26 @@ export default function Edit(props: EditProps<BlockPostsGridEditAttributes>) {
 					label={__("Choose type of post card", "ncmaz-core")}
 					value={postCardName}
 					options={[
+						{ label: "Post card 1", value: "card1" },
+						{ label: "Post card 2", value: "card2" },
 						{ label: "Post card 3", value: "card3" },
 						{ label: "Post card 4", value: "card4" },
+						{ label: "Post card 5", value: "card5" },
+						{ label: "Post card 6", value: "card6" },
 						{ label: "Post card 7", value: "card7" },
+						{ label: "Post card 8", value: "card8" },
 						{ label: "Post card 9", value: "card9" },
 						{ label: "Post card 10", value: "card10" },
 						{ label: "Post card 10V2", value: "card10V2" },
 						{ label: "Post card 11", value: "card11" },
+						{ label: "Post card 12", value: "card12" },
+						{ label: "Post card 13", value: "card13" },
 						{ label: "Post card 14", value: "card14" },
 						{ label: "Post card 15-Podcast", value: "card15Podcast" },
+						{ label: "Post card 16-Podcast", value: "card16Podcast" },
+						{ label: "Post card 17-Podcast", value: "card17Podcast" },
+						{ label: "Post card 18", value: "card18" },
+						{ label: "Post card 19", value: "card19" },
 					]}
 					onChange={(postCardName) => setAttributes({ postCardName })}
 				/>

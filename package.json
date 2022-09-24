@@ -1,6 +1,6 @@
 {
-	"name": "todo-list",
-	"version": "0.1.0",
+	"name": "ncmaz-core",
+	"version": "4.0.0",
 	"description": "Example static block scaffolded with Create Block tool.",
 	"author": "The WordPress Contributors",
 	"license": "GPL-2.0-or-later",

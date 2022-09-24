@@ -6,7 +6,7 @@ import PostCardLikeAndComment from "../PostCardLikeAndComment/PostCardLikeAndCom
 import PostTypeFeaturedIcon from "../PostTypeFeaturedIcon/PostTypeFeaturedIcon";
 import PostCardMeta from "../PostCardMeta/PostCardMeta";
 
-const Card3 = ({ className = "h-full", size = "large", post, isSkeleton }) => {
+const Card3 = ({ className = "h-full", post }) => {
 	const {
 		title,
 		link,
@@ -21,24 +21,22 @@ const Card3 = ({ className = "h-full", size = "large", post, isSkeleton }) => {
 
 	return (
 		<div
-			className={`nc-Card3 relative flex flex-col-reverse sm:flex-row sm:items-center rounded-[40px] group ${className}`}
-			data-nc-id="Card3"
+			className={`nc-Card3 relative flex sm:items-center group sm:p-5 2xl:p-5 [ nc-box-has-hover nc-dark-box-bg-has-hover ] ${className}`}
 		>
 			<a href={link} className="absolute inset-0"></a>
-			<div className="flex flex-col flex-grow">
-				<div className="space-y-3.5 mb-4">
+			<div className="w-full flex flex-col flex-grow">
+				<div className="space-y-2 sm:space-y-3.5 mb-3 sm:mb-4">
 					<CategoryBadgeList categories={categories} />
 					<div>
-						<h2
-							className={`nc-card-title block font-semibold text-neutral-900 dark:text-neutral-100  ${
-								size === "large" ? "text-xl" : "text-base"
-							}`}
-						>
-							<a href={link} className="line-clamp-2" title={title}>
-								{title}
-							</a>
-						</h2>
-						{size === "large" && !!excerpt && (
+						<h3 className="nc-card-title block font-semibold text-neutral-900 dark:text-neutral-100 text-sm sm:text-base lg:text-xl">
+							<a
+								href={link}
+								className="line-clamp-2"
+								title={title}
+								dangerouslySetInnerHTML={{ __html: title || "" }}
+							></a>
+						</h3>
+						{excerpt && (
 							<div className="hidden sm:block sm:mt-2">
 								<span
 									className="text-neutral-500 dark:text-neutral-400 text-base line-clamp-1"
@@ -48,7 +46,7 @@ const Card3 = ({ className = "h-full", size = "large", post, isSkeleton }) => {
 						)}
 					</div>
 
-					<PostCardMeta meta={{ ...post }} />
+					<PostCardMeta className="w-full" meta={{ ...post }} />
 				</div>
 				<div className="flex items-center flex-wrap justify-between mt-auto">
 					<PostCardLikeAndComment postData={post} />
@@ -63,20 +61,15 @@ const Card3 = ({ className = "h-full", size = "large", post, isSkeleton }) => {
 				</div>
 			</div>
 
-			<div
-				className={`block flex-shrink-0 ${
-					size === "large"
-						? "sm:w-56 sm:ml-6 rounded-3xl"
-						: "sm:w-40 sm:ml-5 rounded-2xl"
-				} overflow-hidden mb-5 sm:mb-0`}
-			>
+			<div className={`block flex-shrink-0 ml-5 w-20 sm:w-44 2xl:w-56 `}>
 				<a
 					href={link}
-					className={`w-full block h-0 aspect-h-9 sm:aspect-h-16 aspect-w-16 `}
+					className={`w-full block h-0 aspect-h-16 aspect-w-16 rounded-md sm:rounded-2xl overflow-hidden z-0`}
 				>
 					<NcImage
 						containerClassName="absolute inset-0"
-						src={featuredImage?.node.sourceUrl}
+						className="object-cover w-full h-full group-hover:scale-105 duration-500 transition-transform"
+						src={featuredImage?.node.sourceUrl || "."}
 					/>
 					<span>
 						<PostTypeFeaturedIcon

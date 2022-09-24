@@ -8,7 +8,7 @@ import PostCardMeta from "../PostCardMeta/PostCardMeta";
 import PostCardLikeAction from "../PostCardLikeAction/PostCardLikeAction";
 import CardAuthor2 from "../CardAuthor2/CardAuthor2";
 
-const Card4 = ({ className = "h-full", post, isSkeleton }) => {
+const Card4 = ({ className = "h-full", post }) => {
 	const {
 		title,
 		link,
@@ -28,6 +28,7 @@ const Card4 = ({ className = "h-full", post, isSkeleton }) => {
 				<NcImage
 					containerClassName="absolute inset-0"
 					src={featuredImage?.node.sourceUrl}
+					srcSet={featuredImage?.node.srcSet}
 				/>
 				<div>
 					{ncPostMetaData.favoriteButtonShortcode && (

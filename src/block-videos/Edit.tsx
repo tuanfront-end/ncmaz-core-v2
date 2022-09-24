@@ -44,12 +44,23 @@ export default function Edit(props) {
 									/>
 
 									<div className="mb-3">
+										<span className="block text-sm -mb-3">
+											Youtube video IDs{" "}
+											<a
+												href="https://nghiaxchis.gitbook.io/ncmaz-wordpress/how-to/how-to-get-youtube-video-id"
+												target="_blank"
+												rel="noopener noreferrer"
+												className="text-blue-500 underline"
+											>
+												(How to get video-id?)
+											</a>
+										</span>
 										<FormTokenField
 											value={videoIds}
 											suggestions={[]}
 											onChange={(videoIds) => setAttributes({ videoIds })}
-											label={__("Video IDs", "ncmaz-core")}
-											placeholder={__("Enter youtube video id", "ncmaz-core")}
+											label=""
+											placeholder={__("Enter list Youtube ID", "ncmaz-core")}
 										/>
 									</div>
 

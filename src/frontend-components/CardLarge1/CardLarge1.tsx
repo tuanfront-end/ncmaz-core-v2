@@ -60,6 +60,7 @@ const CardLarge1 = ({
 					containerClassName="aspect-w-16 aspect-h-12 sm:aspect-h-9 md:aspect-h-14 lg:aspect-h-10 2xl:aspect-h-9 relative rounded-3xl"
 					className="absolute !w-full !h-full !inset-0 object-cover rounded-3xl"
 					src={isSkeleton ? "." : featuredImage?.node.sourceUrl || "."}
+					srcSet={featuredImage?.node.srcSet}
 				/>
 			</div>
 		</div>

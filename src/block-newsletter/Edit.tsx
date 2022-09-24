@@ -37,7 +37,7 @@ export default function Edit(props) {
 		setAttributes({
 			mediaId: 0,
 			mediaUrl: "",
-			mediaSrcSet: "",
+			mediaSrcSet: undefined,
 		});
 	};
 
@@ -45,7 +45,7 @@ export default function Edit(props) {
 		setAttributes({
 			mediaId: media.id,
 			mediaUrl: media.url,
-			mediaSrcSet: `${media.url} 1297w, ${media.sizes?.medium?.url} 300w, ${media.sizes?.full?.url} 1024w, ${media.sizes?.large?.url} 768w`,
+			mediaSrcSet: `${media.url} ${media.width}w, ${media.sizes?.medium?.url} ${media.sizes?.medium?.width}w, ${media.sizes?.full?.url} ${media.sizes?.full?.width}w, ${media.sizes?.large?.url} ${media.sizes?.large?.width}w`,
 		});
 	};
 
@@ -85,16 +85,21 @@ export default function Edit(props) {
 												allowedTypes={["image"]}
 												render={({ open }) => (
 													<Button
-														className={
+														className={`h-auto ${
 															mediaId == 0
 																? "editor-post-featured-image__toggle"
 																: "editor-post-featured-image__preview"
-														}
+														}`}
 														onClick={open}
 													>
 														{mediaId == 0 && __("Choose an image", "awp")}
 														{!!mediaUrl && (
-															<img src={mediaUrl} className="w-full" />
+															<img
+																src={mediaUrl}
+																className="w-full block"
+																sizes="250px"
+																srcSet={mediaSrcSet || undefined}
+															/>
 														)}
 													</Button>
 												)}
@@ -177,7 +182,15 @@ export default function Edit(props) {
 						</div>
 					</div>
 					<div className="flex-grow">
-						{mediaUrl && <img src={mediaUrl} className="w-full" alt="" />}
+						{mediaUrl && (
+							<img
+								src={mediaUrl}
+								className="w-full block"
+								sizes="(max-width: 768px) 100vw, 768px"
+								srcSet={mediaSrcSet || undefined}
+								alt=""
+							/>
+						)}
 					</div>
 				</div>
 			</div>

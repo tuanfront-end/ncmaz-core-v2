@@ -9,6 +9,16 @@ $NCMAZ_CORE_INIT_POSTS = [];
 $NCMAZ_CORE_INIT_TERMS = [];
 $NCMAZ_CORE_INIT_USERS = [];
 
+$NCMAZ_CORE_FEATURED_IMAGE_COMMONT =  '
+id
+altText
+caption
+databaseId
+sizes
+sourceUrl
+srcSet
+';
+
 // ===================== POSTS =================================================
 $EDGES_POST_COMMONT_FIELDS = 'edges {
     node {
@@ -27,7 +37,7 @@ $EDGES_POST_COMMONT_FIELDS = 'edges {
           slug
           ncUserMeta {
             featuredImage {
-              sourceUrl
+              ' . $NCMAZ_CORE_FEATURED_IMAGE_COMMONT . '
             }
           }
         }
@@ -53,10 +63,7 @@ $EDGES_POST_COMMONT_FIELDS = 'edges {
       excerpt
       featuredImage {
         node {
-          id
-          altText
-          caption
-          sourceUrl
+          ' . $NCMAZ_CORE_FEATURED_IMAGE_COMMONT . '
         }
       }
       postFormats {
@@ -88,36 +95,28 @@ $EDGES_POST_COMMONT_FIELDS = 'edges {
       ncmazGalleryImgs {
         fieldGroupName
         image1 {
-          id
-          sourceUrl
+          ' . $NCMAZ_CORE_FEATURED_IMAGE_COMMONT . '
         }
         image2 {
-          id
-          sourceUrl
+          ' . $NCMAZ_CORE_FEATURED_IMAGE_COMMONT . '
         }
         image3 {
-          id
-          sourceUrl
+          ' . $NCMAZ_CORE_FEATURED_IMAGE_COMMONT . '
         }
         image4 {
-          id
-          sourceUrl
+          ' . $NCMAZ_CORE_FEATURED_IMAGE_COMMONT . '
         }
         image5 {
-          id
-          sourceUrl
+          ' . $NCMAZ_CORE_FEATURED_IMAGE_COMMONT . '
         }
         image6 {
-          id
-          sourceUrl
+          ' . $NCMAZ_CORE_FEATURED_IMAGE_COMMONT . '
         }
         image7 {
-          id
-          sourceUrl
+          ' . $NCMAZ_CORE_FEATURED_IMAGE_COMMONT . '
         }
         image8 {
-          id
-          sourceUrl
+          ' . $NCMAZ_CORE_FEATURED_IMAGE_COMMONT . '
         }
       }
     }
@@ -136,11 +135,10 @@ $EDGES_USER_COMMONT_FIELDS = 'edges {
 			color
 			ncBio
 			featuredImage {
-				sourceUrl
-				id
+        ' . $NCMAZ_CORE_FEATURED_IMAGE_COMMONT . '
 			}
 			backgroundImage {
-				sourceUrl
+        ' . $NCMAZ_CORE_FEATURED_IMAGE_COMMONT . '
 			}
 		}
     posts {
@@ -164,7 +162,7 @@ $EDGES_TERMS_COMMONT_FIELDS = 'edges {
         ncTaxonomyMeta {
             color                                     
             featuredImage {
-                sourceUrl
+              ' . $NCMAZ_CORE_FEATURED_IMAGE_COMMONT . '
             }
         }
     }

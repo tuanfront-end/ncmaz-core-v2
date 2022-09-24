@@ -1,13 +1,7 @@
 import React, { FC } from "react";
 import CategoryBadgeList from "../CategoryBadgeList/CategoryBadgeList";
 import NcImage from "../NcImage/NcImage";
-import PostCardDropdownShare from "../PostCardDropdownShare/PostCardDropdownShare";
-import PostCardLikeAndComment from "../PostCardLikeAndComment/PostCardLikeAndComment";
 import PostTypeFeaturedIcon from "../PostTypeFeaturedIcon/PostTypeFeaturedIcon";
-import PostCardMeta from "../PostCardMeta/PostCardMeta";
-import PostCardMetaV2 from "../PostCardMeta/PostCardMetaV2";
-import PostCardLikeAction from "../PostCardLikeAction/PostCardLikeAction";
-import CardAuthor2 from "../CardAuthor2/CardAuthor2";
 import ncFormatDate from "../../utils/formatDate";
 import Avatar from "../Avatar/Avatar";
 
@@ -16,7 +10,6 @@ const Card14 = ({
 	ratio = "aspect-w-5 aspect-h-5",
 	post,
 	hoverClass = "",
-	isSkeleton,
 }) => {
 	const { title, link, featuredImage, categories, author, date, postFormats } =
 		post;
@@ -31,6 +24,7 @@ const Card14 = ({
 					containerClassName="absolute inset-0 overflow-hidden"
 					className="object-cover w-full h-full rounded-3xl "
 					src={featuredImage?.node.sourceUrl}
+					srcSet={featuredImage?.node.srcSet}
 				/>
 
 				<span className="absolute inset-0 bg-black bg-opacity-40">

@@ -1,17 +1,9 @@
 import React, { FC } from "react";
-import Card10V2 from "../Card10/Card10V2";
-import Card11 from "../Card11/Card11";
-import Card2 from "../Card2/Card2";
-import Card6 from "../Card6/Card6";
-import Card9 from "../Card9/Card9";
-import Card8 from "../Card8/Card8";
-import Card12 from "../Card12/Card12";
-import Card13 from "../Card13/Card13";
 import NcImage from "../NcImage/NcImage";
 import CardAuthor2 from "../CardAuthor2/CardAuthor2";
 import PostCardMeta from "../PostCardMeta/PostCardMeta";
 
-const SectionMagazine6 = ({ activePosts, isLoading }) => {
+const SectionMagazine6 = ({ activePosts }) => {
 	const renderMain = () => {
 		const {
 			featuredImage,
@@ -30,6 +22,7 @@ const SectionMagazine6 = ({ activePosts, isLoading }) => {
 					<NcImage
 						containerClassName="absolute inset-0"
 						src={featuredImage?.node.sourceUrl}
+						srcSet={featuredImage?.node.srcSet}
 					/>
 					<div>
 						<span className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black"></span>

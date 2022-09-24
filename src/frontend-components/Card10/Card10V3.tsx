@@ -97,13 +97,31 @@ const Card10V3 = ({
 		);
 	};
 
+	const renderFeaturedImage = () => {
+		if (
+			postFormats?.edges[0]?.node.slug !== "post-format-gallery" ||
+			!galleryImgs?.length
+		) {
+			return (
+				<div>
+					<NcImage
+						containerClassName="absolute inset-0"
+						src={featuredImage?.node.sourceUrl}
+					/>
+				</div>
+			);
+		}
+
+		return <div>{galleryType === 1 ? renderGallery() : renderGallery2()}</div>;
+	};
+
 	return (
 		<div
 			className={`nc-Card10V3 group relative flex flex-col ${className}`}
 			data-nc-id="Card10V3"
 		>
 			<div className="block group rounded-3xl flex-shrink-0 relative w-full aspect-w-16 aspect-h-16 sm:aspect-h-9 overflow-hidden">
-				{galleryType === 1 ? renderGallery() : renderGallery2()}
+				{renderFeaturedImage()}
 				<a
 					href={link}
 					className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity"

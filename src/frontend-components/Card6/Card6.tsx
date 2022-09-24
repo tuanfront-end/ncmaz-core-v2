@@ -5,10 +5,8 @@ import PostCardDropdownShare from "../PostCardDropdownShare/PostCardDropdownShar
 import PostCardLikeAndComment from "../PostCardLikeAndComment/PostCardLikeAndComment";
 import PostTypeFeaturedIcon from "../PostTypeFeaturedIcon/PostTypeFeaturedIcon";
 import PostCardMeta from "../PostCardMeta/PostCardMeta";
-import PostCardLikeAction from "../PostCardLikeAction/PostCardLikeAction";
-import CardAuthor2 from "../CardAuthor2/CardAuthor2";
 
-const Card6 = ({ className = "h-full", post, isSkeleton }) => {
+const Card6 = ({ className = "h-full", post }) => {
 	const { title, link, featuredImage, categories, postFormats } = post;
 
 	return (
@@ -41,6 +39,7 @@ const Card6 = ({ className = "h-full", post, isSkeleton }) => {
 					containerClassName="absolute inset-0"
 					className="object-cover w-full h-full"
 					src={featuredImage?.node.sourceUrl}
+					srcSet={featuredImage?.node.srcSet}
 				/>
 				<span className="absolute bottom-1 left-1">
 					<PostTypeFeaturedIcon

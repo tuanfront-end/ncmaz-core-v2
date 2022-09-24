@@ -4,9 +4,6 @@ import NcImage from "../NcImage/NcImage";
 import PostCardDropdownShare from "../PostCardDropdownShare/PostCardDropdownShare";
 import PostCardLikeAndComment from "../PostCardLikeAndComment/PostCardLikeAndComment";
 import PostTypeFeaturedIcon from "../PostTypeFeaturedIcon/PostTypeFeaturedIcon";
-import PostCardMeta from "../PostCardMeta/PostCardMeta";
-import PostCardLikeAction from "../PostCardLikeAction/PostCardLikeAction";
-import CardAuthor2 from "../CardAuthor2/CardAuthor2";
 import ncFormatDate from "../../utils/formatDate";
 
 const Card9 = ({
@@ -14,7 +11,6 @@ const Card9 = ({
 	ratio = "aspect-w-3 aspect-h-3 sm:aspect-h-4",
 	post,
 	hoverClass = "",
-	isSkeleton,
 }) => {
 	const { title, link, featuredImage, categories, author, date, postFormats } =
 		post;
@@ -28,7 +24,7 @@ const Card9 = ({
 							{title}
 						</span>
 					</h2>
-					<div className="flex mt-2.5">
+					<div className="flex items-center mt-2.5">
 						<span className="block text-neutral-200 hover:text-white font-medium truncate py-1">
 							{author?.node.name}
 						</span>
@@ -57,6 +53,7 @@ const Card9 = ({
 					containerClassName="absolute inset-0 rounded-3xl"
 					className="object-cover w-full h-full rounded-3xl"
 					src={featuredImage?.node.sourceUrl}
+					srcSet={featuredImage?.node.srcSet}
 				/>
 				<PostTypeFeaturedIcon
 					className="absolute top-3 left-3 group-hover:hidden"

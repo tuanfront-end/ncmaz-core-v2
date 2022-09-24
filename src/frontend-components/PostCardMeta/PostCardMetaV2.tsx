@@ -18,7 +18,7 @@ const PostCardMetaV2 = ({
 			} ${className}`}
 			data-nc-id="PostCardMetaV2"
 		>
-			<a href="#" className="relative flex items-center space-x-2">
+			<a href="#" className="relative flex space-x-2">
 				{!hiddenAvatar && (
 					<Avatar
 						radius="rounded-full"
@@ -31,11 +31,14 @@ const PostCardMetaV2 = ({
 				)}
 				<div>
 					<h2
-						className={`block font-semibold ${
+						className={`block font-semibold nc-card-title ${
 							size === "normal" ? "text-base" : "text-lg"
 						}`}
 					>
-						<span className="line-clamp-1">{title}</span>
+						<span
+							className="line-clamp-2"
+							dangerouslySetInnerHTML={{ __html: title }}
+						></span>
 					</h2>
 
 					<div className="flex mt-1.5">

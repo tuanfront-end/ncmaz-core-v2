@@ -30,6 +30,7 @@ const Card3Small = ({ className = "h-full", post }) => {
 						containerClassName="absolute inset-0"
 						className="nc-will-change-transform object-cover w-full h-full group-hover:scale-110 transform transition-transform duration-300"
 						src={featuredImage?.node?.sourceUrl}
+						srcSet={featuredImage?.node.srcSet}
 					/>
 				</div>
 			</a>

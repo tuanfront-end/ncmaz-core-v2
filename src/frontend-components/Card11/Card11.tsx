@@ -3,21 +3,15 @@ import CategoryBadgeList from "../CategoryBadgeList/CategoryBadgeList";
 import NcImage from "../NcImage/NcImage";
 import PostCardDropdownShare from "../PostCardDropdownShare/PostCardDropdownShare";
 import PostCardLikeAndComment from "../PostCardLikeAndComment/PostCardLikeAndComment";
-import PostTypeFeaturedIcon from "../PostTypeFeaturedIcon/PostTypeFeaturedIcon";
 import PostCardMeta from "../PostCardMeta/PostCardMeta";
-import PostCardMetaV2 from "../PostCardMeta/PostCardMetaV2";
-import PostCardLikeAction from "../PostCardLikeAction/PostCardLikeAction";
-import CardAuthor2 from "../CardAuthor2/CardAuthor2";
-import ncFormatDate from "../../utils/formatDate";
 
 const Card11 = ({
 	className = "h-full",
 	post,
 	hiddenAuthor = false,
 	ratio = "aspect-w-4 aspect-h-3",
-	isSkeleton,
 }) => {
-	const { title, link, categories, date, ncPostMetaData, featuredImage } = post;
+	const { title, link, categories, date, featuredImage } = post;
 
 	return (
 		<div
@@ -27,9 +21,10 @@ const Card11 = ({
 			<div
 				className={`block flex-shrink-0 relative w-full rounded-t-xl overflow-hidden bg-gray-300 ${ratio}`}
 			>
-				<div>
-					<NcImage src={featuredImage?.node.sourceUrl} />
-				</div>
+				<NcImage
+					src={featuredImage?.node.sourceUrl}
+					srcSet={featuredImage?.node.srcSet}
+				/>
 			</div>
 			<a href={link} className="absolute inset-0"></a>
 			<span className="absolute top-3 inset-x-3">

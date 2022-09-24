@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import CardLarge1 from "../CardLarge1/CardLarge1";
 
-const SectionLargeSlider = ({ activePosts, isLoading }) => {
+const SectionLargeSlider = ({ activePosts, isLoading = false }) => {
 	const [indexActive, setIndexActive] = useState(0);
 
 	const handleClickNext = () => {

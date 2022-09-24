@@ -1,16 +1,9 @@
 import React, { FC } from "react";
-import CategoryBadgeList from "../CategoryBadgeList/CategoryBadgeList";
 import NcImage from "../NcImage/NcImage";
-import PostCardDropdownShare from "../PostCardDropdownShare/PostCardDropdownShare";
-import PostCardLikeAndComment from "../PostCardLikeAndComment/PostCardLikeAndComment";
 import PostTypeFeaturedIcon from "../PostTypeFeaturedIcon/PostTypeFeaturedIcon";
 import PostCardMeta from "../PostCardMeta/PostCardMeta";
-import PostCardMetaV2 from "../PostCardMeta/PostCardMetaV2";
-import PostCardLikeAction from "../PostCardLikeAction/PostCardLikeAction";
-import CardAuthor2 from "../CardAuthor2/CardAuthor2";
-import ncFormatDate from "../../utils/formatDate";
 
-const Card12 = ({ className = "h-full", post, isSkeleton }) => {
+const Card12 = ({ className = "h-full", post }) => {
 	const { title, link, featuredImage, excerpt, postFormats } = post;
 
 	return (
@@ -20,11 +13,12 @@ const Card12 = ({ className = "h-full", post, isSkeleton }) => {
 		>
 			<a
 				href={link}
-				className="block flex-shrink-0 flex-grow relative w-full h-0 aspect-w-4 aspect-h-3 rounded-3xl overflow-hidden"
+				className="block flex-shrink-0 relative w-full h-0 aspect-w-4 aspect-h-3 rounded-3xl overflow-hidden"
 			>
 				<NcImage
 					containerClassName="absolute inset-0"
-					src={isSkeleton ? "." : featuredImage?.node.sourceUrl}
+					src={featuredImage?.node.sourceUrl || "."}
+					srcSet={featuredImage?.node.srcSet}
 				/>
 				<span>
 					<PostTypeFeaturedIcon

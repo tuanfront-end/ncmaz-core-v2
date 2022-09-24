@@ -1,19 +1,15 @@
 import React, { FC } from "react";
 import CategoryBadgeList from "../CategoryBadgeList/CategoryBadgeList";
 import NcImage from "../NcImage/NcImage";
-import PostCardDropdownShare from "../PostCardDropdownShare/PostCardDropdownShare";
-import PostCardLikeAndComment from "../PostCardLikeAndComment/PostCardLikeAndComment";
 import PostTypeFeaturedIcon from "../PostTypeFeaturedIcon/PostTypeFeaturedIcon";
-import PostCardMeta from "../PostCardMeta/PostCardMeta";
 import PostCardLikeAction from "../PostCardLikeAction/PostCardLikeAction";
 import CardAuthor2 from "../CardAuthor2/CardAuthor2";
 
 const Card7 = ({
 	className = "h-full",
-	ratio = "aspect-w-5 aspect-h-5 sm:aspect-h-7",
+	ratio = "aspect-w-5 aspect-h-6",
 	post,
 	hoverClass = "",
-	isSkeleton,
 }) => {
 	const {
 		title,
@@ -43,6 +39,7 @@ const Card7 = ({
 					containerClassName="absolute inset-0 overflow-hidden"
 					className="object-cover w-full h-full rounded-3xl "
 					src={featuredImage?.node.sourceUrl}
+					srcSet={featuredImage?.node.srcSet}
 				/>
 				<PostTypeFeaturedIcon
 					className="absolute top-3 left-3"

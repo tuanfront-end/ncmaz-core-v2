@@ -53,13 +53,14 @@ export default function Save(props) {
 									srcSet={mediaSrcSet}
 									src={mediaUrl}
 									className="w-full"
-									sizes="(max-width: 1297px) 100vw, 1297px"
+									sizes="(max-width: 768px) 100vw, 768px"
 									alt="newsletter right image"
 								/>
 							) : (
 								<img
 									src={mediaUrl}
 									className="w-full"
+									sizes="(max-width: 768px) 100vw, 768px"
 									alt="newsletter right image"
 								/>
 							)

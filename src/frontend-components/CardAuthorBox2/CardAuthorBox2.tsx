@@ -38,6 +38,7 @@ const CardAuthorBox2 = ({ className = "", author }) => {
 					sizeClass="w-16 h-16 text-2xl"
 					radius="rounded-full"
 					imgUrl={featuredImage?.sourceUrl || avatar?.url}
+					srcSet={featuredImage?.sourceUrl ? featuredImage?.srcSet : undefined}
 					userName={username}
 				/>
 				<div className="mt-3">

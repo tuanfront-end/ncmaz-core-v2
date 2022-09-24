@@ -327,71 +327,68 @@ export default function BlockMagazineEdit(
 			case "magazine-1":
 				return (
 					<Suspense fallback={<Spinner />}>
-						<SectionMagazine1Lazy isLoading={loading} activePosts={dataLists} />
+						<SectionMagazine1Lazy activePosts={dataLists} />
 					</Suspense>
 				);
 			case "magazine-2":
 				return (
 					<Suspense fallback={<Spinner />}>
-						<SectionMagazine2Lazy isLoading={loading} activePosts={dataLists} />{" "}
+						<SectionMagazine2Lazy activePosts={dataLists} />{" "}
 					</Suspense>
 				);
 			case "magazine-3":
 				return (
 					<Suspense fallback={<Spinner />}>
-						<SectionMagazine3Lazy isLoading={loading} activePosts={dataLists} />
+						<SectionMagazine3Lazy activePosts={dataLists} />
 					</Suspense>
 				);
 			case "magazine-4":
 				return (
 					<Suspense fallback={<Spinner />}>
-						<SectionMagazine4Lazy isLoading={loading} activePosts={dataLists} />
+						<SectionMagazine4Lazy activePosts={dataLists} />
 					</Suspense>
 				);
 			case "magazine-5":
 				return (
 					<Suspense fallback={<Spinner />}>
-						<SectionMagazine5Lazy isLoading={loading} activePosts={dataLists} />
+						<SectionMagazine5Lazy activePosts={dataLists} />
 					</Suspense>
 				);
 			case "magazine-6":
 				return (
 					<Suspense fallback={<Spinner />}>
-						<SectionMagazine6Lazy isLoading={loading} activePosts={dataLists} />
+						<SectionMagazine6Lazy activePosts={dataLists} />
 					</Suspense>
 				);
 			case "magazine-7":
 				return (
 					<Suspense fallback={<Spinner />}>
-						<SectionMagazine7Lazy isLoading={loading} activePosts={dataLists} />
+						<SectionMagazine7Lazy activePosts={dataLists} />
 					</Suspense>
 				);
 			case "magazine-8":
 				return (
 					<Suspense fallback={<Spinner />}>
-						<SectionMagazine8Lazy isLoading={loading} activePosts={dataLists} />
+						<SectionMagazine8Lazy activePosts={dataLists} />
 					</Suspense>
 				);
 			case "magazine-9":
 				return (
 					<Suspense fallback={<Spinner />}>
-						<SectionMagazine9Lazy isLoading={loading} activePosts={dataLists} />
+						<SectionMagazine9Lazy activePosts={dataLists} />
 					</Suspense>
 				);
 			case "large-slider":
 				return (
 					<Suspense fallback={<Spinner />}>
-						<SectionLargeSliderLazy
-							isLoading={loading}
-							activePosts={dataLists}
-						/>
+						<SectionLargeSliderLazy activePosts={dataLists} />
 					</Suspense>
 				);
 
 			default:
 				return (
 					<Suspense fallback={<Spinner />}>
-						<SectionMagazine1Lazy isLoading={loading} activePosts={dataLists} />
+						<SectionMagazine1Lazy activePosts={dataLists} />
 					</Suspense>
 				);
 		}

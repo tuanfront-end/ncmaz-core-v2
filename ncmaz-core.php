@@ -5,7 +5,7 @@
  * Description:       Example block written with ESNext standard and JSX support.
  * Requires at least: 5.8
  * Requires PHP:      7.3
- * Version:           3.0.0
+ * Version:           4.0.0
  * Author:            ChisNghiax
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@
  */
 
 if (!defined('_NCMAZ_CORE_VERSION')) {
-	define('_NCMAZ_CORE_VERSION', '3.0.0');
+	define('_NCMAZ_CORE_VERSION', '4.0.0');
 }
 
 require plugin_dir_path(__FILE__) . 'inc/ncmazCore_contantsCommon.php';
@@ -232,6 +232,43 @@ function ncmazCore_create_blocks_gutenberg_init()
 	// 
 	register_block_type(__DIR__ . '/build/block-become-author', [
 		// "editor_style"	=> "ncmaz-core-block-become-author-editor-style",
+		"attributes"		=>  	[
+			"hasBackground" 	=> [
+				"type" 		=> "boolean",
+				"default" 	=> true
+			],
+			"headingSmallText" => [
+				"type" => "string",
+				"default" => "supper change your planning powers",
+			],
+			"heading" => [
+				"type" => "string",
+				"default" => "Become an author and share your great stories",
+			],
+			"description" => [
+				"type" => "string",
+				"default" => 'Become an author you can earn extra income by writing articles. Read and share new perspectives on just about any topic. Everyone’s welcome.',
+			],
+			"buttonText" => [
+				"type" => "string",
+				"default" => "Become an author"
+			],
+			"buttonHref" => [
+				"type" => "string",
+				"default" => "/#"
+			],
+			"mediaId" => [
+				"type" => "number",
+				"default" => 0
+			],
+			"mediaUrl" => [
+				"type" => "string",
+				"default" => "https://images.pexels.com/photos/7882547/pexels-photo-7882547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+			],
+			"mediaSrcSet" => [
+				"type" => "string"
+			],
+		],
 		"editor_style"	=> "ncmaz-core-block-become-author-style",
 		'style'         => null,
 	]);
@@ -239,6 +276,35 @@ function ncmazCore_create_blocks_gutenberg_init()
 		'style'         => null,
 	]);
 	register_block_type(__DIR__ . '/build/block-newsletter', [
+		"attributes"	=>	[
+			"hasBackground" => [
+				"type" => "boolean",
+				"default" => false
+			],
+			"heading" => [
+				"type" => "string",
+				"default" => "Join our newsletter 🎉",
+			],
+			"subHeading" => [
+				"type" => "string",
+				"default" => "Read and share new perspectives on just about any topic. Everyone’s welcome.",
+			],
+			"mediaId" => [
+				"type" => "number",
+				"default" => 0
+			],
+			"mediaUrl" => [
+				"type" => "string",
+				"default" => "https://images.pexels.com/photos/7882547/pexels-photo-7882547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+			],
+			"mediaSrcSet" => [
+				"type" => "string",
+			],
+			"descLists" => [
+				"type" => "array",
+				"default" => []
+			],
+		],
 		'style'         => null,
 	]);
 
