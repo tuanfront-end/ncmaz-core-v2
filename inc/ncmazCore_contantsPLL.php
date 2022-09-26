@@ -78,11 +78,11 @@ $PLL__GQL_QUERY_GET_CATEGORIES_BY_FILTER =   '
 $PLL__GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC = '
 	query GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC(
     $language: LanguageCodeFilterEnum = ' . $NCMAZCORE_PLL_CURRENT_LANGUAGE . '
-    $termTaxonomId: [ID] = ""
+    $termTaxonomyId: [ID] = ""
     ) {
 		categories(where: {
       language: $language
-      termTaxonomId: $termTaxonomId
+      termTaxonomyId: $termTaxonomId
      }) { ' . $EDGES_TERMS_COMMONT_FIELDS . ' }
 	}
 ';

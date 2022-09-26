@@ -85,7 +85,7 @@ $GQL_QUERY_GET_CATEGORIES_BY_FILTER = '
 
 $GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC = '
 	query GQL_QUERY_GET_CATEGORIES_BY_SPECIFIC($termTaxonomId: [ID] = "") {
-		categories(where: { termTaxonomId: $termTaxonomId }) { ' . $EDGES_TERMS_COMMONT_FIELDS . ' }
+		categories(where: { termTaxonomyId: $termTaxonomId }) { ' . $EDGES_TERMS_COMMONT_FIELDS . ' }
 	}
 ';
 
@@ -111,7 +111,7 @@ $GQL_QUERY_GET_TAGS_BY_FILTER = '
 
 $GQL_QUERY_GET_TAGS_BY_SPECIFIC = '
 	query GQL_QUERY_GET_TAGS_BY_SPECIFIC($termTaxonomId: [ID] = "") {
-		tags(where: { termTaxonomId: $termTaxonomId }) { ' . $EDGES_TERMS_COMMONT_FIELDS . ' }
+		tags(where: { termTaxonomyId: $termTaxonomId }) { ' . $EDGES_TERMS_COMMONT_FIELDS . ' }
 	}
 ';
 
