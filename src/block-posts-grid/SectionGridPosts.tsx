@@ -122,7 +122,7 @@ const SectionGridPosts: FC<SectionGridPostsProps> = ({
 
 	return (
 		<div className={"relative"}>
-			{showFilterTab ? (
+			{showFilterTab && !!categories?.length ? (
 				<HeaderSectionFilter
 					tabs={categories}
 					viewMoreHref={viewMoreHref}

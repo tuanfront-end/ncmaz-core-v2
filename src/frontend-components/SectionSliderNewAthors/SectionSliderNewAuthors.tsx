@@ -73,7 +73,7 @@ const SectionSliderNewAuthors = ({
 				<div className="glide__track" data-glide-el="track">
 					<ul className="glide__slides">
 						{authors.map((item, index) => (
-							<li key={index} className="glide__slide pb-12 md:pb-16">
+							<li key={index} className="glide__slide !h-auto pb-12 md:pb-16">
 								{renderCard(item.node)}
 							</li>
 						))}

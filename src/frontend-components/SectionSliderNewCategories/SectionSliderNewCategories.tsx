@@ -63,7 +63,7 @@ const SectionSliderNewCategories = ({
 						{categories.map((item, index) => (
 							<li
 								key={index}
-								className={`!list-none glide__slide ${itemClassName}`}
+								className={`!list-none glide__slide !h-auto ${itemClassName}`}
 							>
 								{renderCard(item, index)}
 							</li>

@@ -180,27 +180,38 @@ export default function Edit(props: EditProps<Props>) {
 						{ label: "User card 2", value: "card2" },
 					]}
 					onChange={(userCardName) => {
-						setAttributes({ userCardName });
+						setAttributes({
+							userCardName,
+							gridClass:
+								"grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5",
+						});
 					}}
 				/>
 
 				<SelectControl
 					label={__("Choose items per row", "ncmaz-core")}
 					value={gridClass}
-					help={__(
-						`xs: mobile, sm: tablet, lg: laptop, xl: desktop (https://tailwindcss.com/docs/responsive-design)`,
-						"ncmaz-core"
-					)}
+					help={__(`Large: Other larger devices`, "ncmaz-core")}
 					options={[
 						{
-							label: "Phone(1)/Tab(2)/Lap(3)/OTHER(4)",
+							label: "Phone:1/Tablet:2/Laptop:3/Larger:4",
 							value:
 								"grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
 						},
 						{
-							label: "Phone(1)/Tab(2,3)/Lap(4)/OTHER(5)",
+							label: "Phone:2/Tablet:2/Laptop:3/Larger:4",
+							value:
+								"grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+						},
+						{
+							label: "Phone:1/Tablet:23)/Laptop:4/Larger:5",
 							value:
 								"grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5",
+						},
+						{
+							label: "Phone:2/Tablet:3/Laptop:4/Larger:5",
+							value:
+								"grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5",
 						},
 					]}
 					onChange={(gridClass) => setAttributes({ gridClass })}
@@ -208,14 +219,28 @@ export default function Edit(props: EditProps<Props>) {
 
 				<div>
 					<TextControl
-						label={__("Items per row custom (advance)", "ncmaz-core")}
+						label={__(
+							"Items per row overwrite class(es) (advance)",
+							"ncmaz-core"
+						)}
 						value={gridClassCustom}
 						type="text"
 						onChange={(gridClassCustom) => setAttributes({ gridClassCustom })}
-						help={__(
-							`If you enter this field will overwrite the field "Choose items per row" above, (https://tailwindcss.com/docs/responsive-design)`,
-							"ncmaz-core"
-						)}
+						help={
+							<span>
+								If you enter this field will overwrite the field "Choose items
+								per row" above (
+								<a
+									href="https://tailwindcss.com/docs/responsive-design"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="text-sky-500"
+								>
+									Tailwindcss responsive-design
+								</a>
+								)
+							</span>
+						}
 					/>
 				</div>
 

@@ -193,7 +193,6 @@ export default function BlockPostsSliderEdit(
 					label={__("Choose type of post card", "ncmaz-core")}
 					value={postCardName}
 					options={[
-						{ label: "Post card 1", value: "card1" },
 						{ label: "Post card 2", value: "card2" },
 						{ label: "Post card 3", value: "card3" },
 						{ label: "Post card 4", value: "card4" },
@@ -210,11 +209,40 @@ export default function BlockPostsSliderEdit(
 						{ label: "Post card 14", value: "card14" },
 						{ label: "Post card 15-Podcast", value: "card15Podcast" },
 						{ label: "Post card 16-Podcast", value: "card16Podcast" },
-						{ label: "Post card 17-Podcast", value: "card17Podcast" },
 						{ label: "Post card 18", value: "card18" },
 						{ label: "Post card 19", value: "card19" },
 					]}
-					onChange={(postCardName) => setAttributes({ postCardName })}
+					onChange={(postCardName) => {
+						setAttributes({ postCardName });
+						const horizontalCol2 = ["card3", "card6", "card13"];
+						const boxBorderCol4_phone1 = [
+							"card2",
+							"card4",
+							"card5",
+							"card7",
+							"card9",
+							"card11",
+							"card14",
+							"card17Podcast",
+						];
+						const cardLargeCol3 = [
+							"card1",
+							"card8",
+							"card10V2",
+							"card12",
+							"card15Podcast",
+							"card16Podcast",
+						];
+						if (boxBorderCol4_phone1.includes(postCardName)) {
+							setAttributes({ itemPerView: 4 });
+						} else if (horizontalCol2.includes(postCardName)) {
+							setAttributes({ itemPerView: 2 });
+						} else if (cardLargeCol3.includes(postCardName)) {
+							setAttributes({ itemPerView: 3 });
+						} else {
+							setAttributes({ itemPerView: 4 });
+						}
+					}}
 				/>
 
 				<div className="w-full space-y-1">
@@ -261,18 +289,28 @@ export default function BlockPostsSliderEdit(
 				/>
 
 				{filterDataBy !== "by_specific" && (
-					<div className="w-full space-x-3 flex ">
-						<FormToggle
-							checked={showFilterTab}
-							onChange={() => setAttributes({ showFilterTab: !showFilterTab })}
-							label={__("Show filter tab", "ncmaz-core")}
-						/>
-						<legend>{__("Show filter tab", "ncmaz-core")}</legend>
+					<div>
+						<div className="w-full pt-2.5 space-x-3 flex ">
+							<FormToggle
+								checked={showFilterTab}
+								onChange={() =>
+									setAttributes({ showFilterTab: !showFilterTab })
+								}
+								label={__("Show filter tabs", "ncmaz-core")}
+							/>
+							<legend>{__("Show filter tabs", "ncmaz-core")}</legend>
+						</div>
+						<span className="text-xs text-slate-600">
+							{__(
+								"The Tabs will be the categories you choose in the Filter-data-settings section below",
+								"ncmaz-core"
+							)}
+						</span>
 					</div>
 				)}
 
 				<TextControl
-					label={__("View more href", "ncmaz-core")}
+					label={__("View all button href", "ncmaz-core")}
 					value={viewMoreHref}
 					type="url"
 					onChange={(viewMoreHref) => setAttributes({ viewMoreHref })}

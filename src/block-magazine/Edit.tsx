@@ -402,7 +402,7 @@ export default function BlockMagazineEdit(
 			>
 				{isBg && <BackgroundSection />}
 
-				{showFilterTab ? (
+				{showFilterTab && !!categories?.length ? (
 					<HeaderSectionFilter
 						tabActiveId={tabActiveId}
 						tabs={categories}

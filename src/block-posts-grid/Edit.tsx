@@ -201,33 +201,71 @@ export default function Edit(props: EditProps<BlockPostsGridEditAttributes>) {
 						{ label: "Post card 18", value: "card18" },
 						{ label: "Post card 19", value: "card19" },
 					]}
-					onChange={(postCardName) => setAttributes({ postCardName })}
+					onChange={(postCardName) => {
+						setAttributes({ postCardName });
+						const horizontalCol2 = ["card3", "card6", "card13"];
+						const boxBorderCol4_phone1 = [
+							"card2",
+							"card4",
+							"card5",
+							"card7",
+							"card9",
+							"card11",
+							"card14",
+							"card17Podcast",
+						];
+						const cardLargeCol3 = [
+							"card1",
+							"card8",
+							"card10V2",
+							"card12",
+							"card15Podcast",
+							"card16Podcast",
+						];
+						if (boxBorderCol4_phone1.includes(postCardName)) {
+							setAttributes({
+								gridClass:
+									"grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+							});
+						} else if (horizontalCol2.includes(postCardName)) {
+							setAttributes({ gridClass: "grid-cols-1 sm:grid-cols-2" });
+						} else if (cardLargeCol3.includes(postCardName)) {
+							setAttributes({
+								gridClass: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
+							});
+						} else {
+							setAttributes({
+								gridClass:
+									"grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+							});
+						}
+					}}
 				/>
 
 				<SelectControl
 					label={__("Choose items per row", "ncmaz-core")}
 					value={gridClass}
-					help={__(
-						`xs: mobile, sm: tablet, lg: laptop, xl: desktop (https://tailwindcss.com/docs/responsive-design)`,
-						"ncmaz-core"
-					)}
+					help={__(`Large: Other larger devices`, "ncmaz-core")}
 					options={[
 						{
-							label: "Only 1",
+							label: "Only 1 for all devices",
 							value: "grid-cols-1",
 						},
 						{
-							label: "Phone(1)/OTHER(2)",
+							label: "Phone:1/Larger:2",
 							value: "grid-cols-1 sm:grid-cols-2",
 						},
 						{
-							label: "Phone(1)/Tab(2)/OTHER(3)",
+							label: "Phone:1/Tablet:2/Larger:3",
 							value: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
 						},
 						{
-							label: "Phone(1)/Tab(2)/Lap(3)/OTHER(4)",
-							value:
-								"grid-cols-1 sm:grid-cols-2 lg:md:grid-cols-3 xl:grid-cols-4",
+							label: "Phone:1/Tablet:2/Laptop:3/Larger:4",
+							value: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+						},
+						{
+							label: "Phone:2/Tablet:2/Laptop:3/Larger:4",
+							value: "grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
 						},
 					]}
 					onChange={(gridClass) => setAttributes({ gridClass })}
@@ -235,14 +273,28 @@ export default function Edit(props: EditProps<BlockPostsGridEditAttributes>) {
 
 				<div>
 					<TextControl
-						label={__("Items per row custom (advance)", "ncmaz-core")}
+						label={__(
+							"Items per row overwrite class(es) (advance)",
+							"ncmaz-core"
+						)}
 						value={gridClassCustom}
 						type="text"
 						onChange={(gridClassCustom) => setAttributes({ gridClassCustom })}
-						help={__(
-							`If you enter this field will overwrite the field "Choose items per row" above (https://tailwindcss.com/docs/responsive-design)`,
-							"ncmaz-core"
-						)}
+						help={
+							<span>
+								If you enter this field will overwrite the field "Choose items
+								per row" above (
+								<a
+									href="https://tailwindcss.com/docs/responsive-design"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="text-sky-500"
+								>
+									Tailwindcss responsive-design
+								</a>
+								)
+							</span>
+						}
 					/>
 				</div>
 

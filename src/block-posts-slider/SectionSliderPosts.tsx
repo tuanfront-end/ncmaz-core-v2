@@ -72,7 +72,8 @@ const SectionSliderPosts: FC<SectionSliderPostsProps> = ({
 		listData,
 	});
 
-	const enableNexPrevOnFoot = blockLayoutStyle === "layout-2" || showFilterTab;
+	const enableNexPrevOnFoot =
+		blockLayoutStyle === "layout-2" || (showFilterTab && !!categories?.length);
 
 	const renderPostComponent = (post, index) => {
 		switch (postCardName) {
@@ -142,7 +143,7 @@ const SectionSliderPosts: FC<SectionSliderPostsProps> = ({
 
 	return (
 		<div className={`${className}`} ref={sliderRef}>
-			{showFilterTab ? (
+			{showFilterTab && !!categories?.length ? (
 				<HeaderSectionFilter
 					tabActiveId={tabActiveId}
 					tabs={categories}
@@ -159,7 +160,7 @@ const SectionSliderPosts: FC<SectionSliderPostsProps> = ({
 					{listData.map((item, index) => (
 						<li
 							key={index}
-							className={`glide__slide ${
+							className={`glide__slide !h-auto ${
 								enableNexPrevOnFoot ? "pb-12 xl:pb-16" : ""
 							}`}
 						>

@@ -5,7 +5,7 @@
  * Description:       Example block written with ESNext standard and JSX support.
  * Requires at least: 5.8
  * Requires PHP:      7.3
- * Version:           4.0.0
+ * Version:           4.1.0
  * Author:            ChisNghiax
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@
  */
 
 if (!defined('_NCMAZ_CORE_VERSION')) {
-	define('_NCMAZ_CORE_VERSION', '4.0.0');
+	define('_NCMAZ_CORE_VERSION', '4.1.0');
 }
 
 require plugin_dir_path(__FILE__) . 'inc/ncmazCore_contantsCommon.php';
@@ -87,7 +87,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 		],
 		"showFilterTab" => [
 			"type" => "boolean",
-			"default" => true
+			"default" => false
 		],
 		"hasBackground" => [
 			"type" => "boolean",
@@ -210,7 +210,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 	];
 	$ATTR_SETTINGS_SLIDER = [
 		"itemPerView" => [
-			"type" => "number", "default" => 4
+			"type" => "number", "default" => 5
 		],
 		"sliderStartAt" => [
 			"type" => "number", "default" => 0
@@ -373,7 +373,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 				[
 					"gridClass" 		=> [
 						"type" 		=> "string",
-						"default" 	=> "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5",
+						"default" 	=> "grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5",
 					],
 					"gridClassCustom" 	=> ["type" => "string", "default" => ""],
 					"sectionId" 		=> ["type" => "string", "default" => "gutenberg_section_term_grid"]
@@ -411,7 +411,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 				[
 					"gridClass" => [
 						"type" 		=> "string",
-						"default" 	=> "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5",
+						"default" 	=> "grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5",
 					],
 					"gridClassCustom" => ["type" => "string", "default" => ""],
 				],

@@ -183,7 +183,7 @@ export default function Edit(props: EditProps<BlockTermSliderProps>) {
 	const renderGeneralSetting = () => {
 		return (
 			<div className="space-y-2.5">
-				<SelectControl
+				{/* <SelectControl
 					label={__("Choose block layout", "ncmaz-core")}
 					value={blockLayoutStyle}
 					options={[
@@ -193,7 +193,7 @@ export default function Edit(props: EditProps<BlockTermSliderProps>) {
 					onChange={(blockLayoutStyle) => {
 						setAttributes({ blockLayoutStyle });
 					}}
-				/>
+				/> */}
 				<SelectControl
 					label={__("Choose type of card", "ncmaz-core")}
 					value={termCardName}
