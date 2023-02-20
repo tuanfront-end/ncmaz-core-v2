@@ -5,7 +5,7 @@
  * Description:       Example block written with ESNext standard and JSX support.
  * Requires at least: 5.8
  * Requires PHP:      7.3
- * Version:           4.1.0
+ * Version:           4.1.1
  * Author:            ChisNghiax
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@
  */
 
 if (!defined('_NCMAZ_CORE_VERSION')) {
-	define('_NCMAZ_CORE_VERSION', '4.1.0');
+	define('_NCMAZ_CORE_VERSION', '4.1.1');
 }
 
 require plugin_dir_path(__FILE__) . 'inc/ncmazCore_contantsCommon.php';
@@ -270,10 +270,10 @@ function ncmazCore_create_blocks_gutenberg_init()
 			],
 		],
 		"editor_style"	=> "ncmaz-core-block-become-author-style",
-		'style'         => null,
+		'style'         => '',
 	]);
 	register_block_type(__DIR__ . '/build/block-videos', [
-		'style'         => null,
+		'style'         => '',
 	]);
 	register_block_type(__DIR__ . '/build/block-newsletter', [
 		"attributes"	=>	[
@@ -305,7 +305,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 				"default" => []
 			],
 		],
-		'style'         => null,
+		'style'         => '',
 	]);
 
 	//  ======== block-magazine =================
@@ -320,7 +320,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 			],
 			$BLOCK_POST_ATTRIBUTES_COMMON
 		),
-		'style'         => null,
+		'style'         => '',
 	]);
 
 	//  ======== block-posts-grid =================
@@ -342,7 +342,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 					"loadMoreButtonHref" 	=> ["type" => "string", "default" => ""]
 				]
 			),
-			'style'         => null,
+			'style'         => '',
 		]
 	);
 
@@ -356,11 +356,13 @@ function ncmazCore_create_blocks_gutenberg_init()
 					"blockLayoutStyle" 	=> ["type" => "string", "default" => "layout-1"],
 					"postCardName" 		=> ["type" => "string", "default" => "card4"],
 					"sectionId" 		=> ["type" => "string", "default" => "gutenberg_section_id"],
+
 				],
 				$ATTR_SETTINGS_SLIDER,
+				["itemPerView" => ["type" => "number", "default" => 4]],
 				$BLOCK_POST_ATTRIBUTES_COMMON,
 			),
-			'style'         => null,
+			'style'         => '',
 		]
 	);
 
@@ -380,7 +382,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 				],
 				$BLOCK_TERM_ATTRIBUTES_COMMON,
 			),
-			'style'         => null,
+			'style'         => '',
 		]
 	);
 
@@ -398,7 +400,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 				$ATTR_SETTINGS_SLIDER,
 				$BLOCK_TERM_ATTRIBUTES_COMMON,
 			),
-			'style'         => null,
+			'style'         => '',
 		]
 	);
 
@@ -417,7 +419,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 				],
 				$BLOCK_USER_ATTRIBUTES_COMMON,
 			),
-			'style'         => null,
+			'style'         => '',
 		]
 	);
 
@@ -430,7 +432,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 				$ATTR_SETTINGS_SLIDER,
 				$BLOCK_USER_ATTRIBUTES_COMMON,
 			),
-			'style'         => null,
+			'style'         => '',
 		]
 	);
 
@@ -445,7 +447,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 					"postCardName" => ["type" => "string", "default" => "card4"],
 				]
 			),
-			'style'         => null,
+			'style'         => '',
 		]
 	);
 
@@ -455,7 +457,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 		[
 			"render_callback" 	=> "render_callback_block_widget_terms",
 			"attributes"		=> $BLOCK_TERM_ATTRIBUTES_COMMON,
-			'style'         => null,
+			'style'         => '',
 		]
 	);
 
@@ -465,7 +467,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 		[
 			"render_callback" 	=> "render_callback_block_widget_users",
 			"attributes"		=> $BLOCK_USER_ATTRIBUTES_COMMON,
-			'style'         => null,
+			'style'         => '',
 		]
 	);
 }
