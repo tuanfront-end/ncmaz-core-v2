@@ -5,7 +5,7 @@
  * Description:       Example block written with ESNext standard and JSX support.
  * Requires at least: 5.8
  * Requires PHP:      7.3
- * Version:           4.1.3
+ * Version:           4.1.4
  * Author:            ChisNghiax
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@
  */
 
 if (!defined('_NCMAZ_CORE_VERSION')) {
-	define('_NCMAZ_CORE_VERSION', '4.1.3');
+	define('_NCMAZ_CORE_VERSION', '4.1.4');
 }
 
 require plugin_dir_path(__FILE__) . 'inc/ncmazCore_contantsCommon.php';
@@ -229,10 +229,9 @@ function ncmazCore_create_blocks_gutenberg_init()
 		],
 	];
 
-	$BLOCK_COMMON_STYLE_VAL = 'none';
+	$BLOCK_COMMON_STYLE_VAL = 'nocss';
 	// 
 	register_block_type(__DIR__ . '/build/block-become-author', [
-		// "editor_style"	=> "ncmaz-core-block-become-author-editor-style",
 		"attributes"		=>  	[
 			"hasBackground" 	=> [
 				"type" 		=> "boolean",
@@ -270,7 +269,7 @@ function ncmazCore_create_blocks_gutenberg_init()
 				"type" => "string"
 			],
 		],
-		"editor_style"	=> "ncmaz-core-block-become-author-style",
+		// "editor_style"	=> "ncmaz-core-block-become-author-style",
 		'style'         => $BLOCK_COMMON_STYLE_VAL,
 	]);
 

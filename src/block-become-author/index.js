@@ -11,11 +11,10 @@ import { Suspense } from "react";
 import { Spinner } from "@wordpress/components";
 
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
-import "../style.css";
 import "../styles/index.scss";
 import "@glidejs/glide/dist/css/glide.core.min.css";
 //-----------------------------------------
-console.log(11111, "-----BECOME AUTHOR BLOCK - MAIN CSS ----------");
+console.log("-----BECOME AUTHOR BLOCK - MAIN CSS ----------");
 //
 const { Fragment } = wp.element;
 const { withSelect } = wp.data;

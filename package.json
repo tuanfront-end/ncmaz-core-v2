@@ -15,19 +15,18 @@
 		"start": "wp-scripts start"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^26.12.0"
+		"@wordpress/scripts": "^27.6.0"
 	},
 	"dependencies": {
 		"@apollo/client": "^3.8.3",
 		"@glidejs/glide": "^3.6.0",
 		"@tailwindcss/aspect-ratio": "^0.4.2",
 		"@tailwindcss/forms": "^0.5.6",
-		"@tailwindcss/line-clamp": "^0.4.4",
 		"@tailwindcss/typography": "^0.5.10",
-		"@types/wordpress__block-editor": "^11.5.3",
-		"@wordpress/block-editor": "^12.9.0",
-		"@wordpress/components": "^25.7.0",
-		"@wordpress/i18n": "^4.41.0",
+		"@types/wordpress__block-editor": "^11.5.14",
+		"@wordpress/block-editor": "^12.23.0",
+		"@wordpress/components": "^27.3.0",
+		"@wordpress/i18n": "^4.55.0",
 		"autoprefixer": "^10.4.15",
 		"cssjanus": "^2.1.0",
 		"graphql": "^16.8.0",

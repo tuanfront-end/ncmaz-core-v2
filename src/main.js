@@ -9,10 +9,9 @@ import {
 } from "@apollo/client";
 import { RetryLink } from "@apollo/client/link/retry";
 //
-import "@glidejs/glide/dist/css/glide.core.min.css";
-import "./styles/index.scss";
-import "./style.css";
-console.log(12345, "-------- FIRTS MAIN JS -------");
+// import "@glidejs/glide/dist/css/glide.core.min.css";
+// import "./styles/index.scss";
+// console.log(12345, "-------- FIRTS MAIN JS -------");
 //
 
 const cache = new InMemoryCache({
