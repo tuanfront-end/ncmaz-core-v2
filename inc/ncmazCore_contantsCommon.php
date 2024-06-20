@@ -10,6 +10,7 @@ $NCMAZ_CORE_INIT_TERMS = [];
 $NCMAZ_CORE_INIT_USERS = [];
 
 $NCMAZ_CORE_FEATURED_IMAGE_COMMONT =  '
+node {
 id
 altText
 caption
@@ -17,6 +18,7 @@ databaseId
 sizes
 sourceUrl
 srcSet
+}
 ';
 
 // ===================== POSTS =================================================
@@ -62,9 +64,9 @@ $EDGES_POST_COMMONT_FIELDS = 'edges {
       date
       excerpt
       featuredImage {
-        node {
+        
           ' . $NCMAZ_CORE_FEATURED_IMAGE_COMMONT . '
-        }
+        
       }
       postFormats {
         edges {
